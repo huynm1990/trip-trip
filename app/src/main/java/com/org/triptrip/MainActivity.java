@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     GridView androidGridView;
 
     String[] gridViewString = {
-            "Events", "Experience", "Services", "Q&A"
+            "Events", "Experience", "Services", "Questions and Answers"
     } ;
 
 
