@@ -1,9 +1,9 @@
 package com.org.triptrip;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class ServicesActivity extends AppCompatActivity {
+public class ServicesActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
