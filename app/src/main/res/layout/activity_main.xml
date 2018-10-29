@@ -8,12 +8,10 @@ android:gravity="center_horizontal"
 android:orientation="vertical"
 tools:context=".MainActivity">
 
-    <GridView
-        android:id="@+id/grid_view_image_text"
+    <fragment
+        class="com.org.triptrip.PizzaMaterialFragment"
+        android:id="@+id/detail_frag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="150dp"
-        android:gravity="center"
-        android:numColumns="auto_fit" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
