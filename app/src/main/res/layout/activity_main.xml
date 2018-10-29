@@ -9,7 +9,7 @@ android:orientation="vertical"
 tools:context=".MainActivity">
 
     <fragment
-        class="com.org.triptrip.PizzaMaterialFragment"
+        class="com.org.triptrip.CategoryMaterialFragment"
         android:id="@+id/detail_frag"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

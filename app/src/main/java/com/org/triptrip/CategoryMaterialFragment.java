@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 
 
-public class PizzaMaterialFragment extends Fragment {
+public class CategoryMaterialFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
