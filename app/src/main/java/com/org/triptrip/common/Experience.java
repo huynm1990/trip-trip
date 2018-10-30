@@ -1,4 +1,6 @@
-package com.org.triptrip;
+package com.org.triptrip.common;
+
+import com.org.triptrip.R;
 
 /**
  * Experience class

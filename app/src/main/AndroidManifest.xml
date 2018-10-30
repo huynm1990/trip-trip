@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,15 +22,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/txt_activity_login" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activity.RegisterActivity"
             android:label="Register" />
-        <activity android:name=".EventsActivity" />
-        <activity android:name=".ExperiencesActivity" />
-        <activity android:name=".ServicesActivity" />
-        <activity android:name=".QuestionsAnswersActivity"></activity>
+        <activity android:name=".activity.EventsActivity" />
+        <activity android:name=".activity.ExperiencesActivity" />
+        <activity android:name=".activity.ServicesActivity" />
+        <activity android:name=".activity.QuestionsAnswersActivity"></activity>
     </application>
 
 </manifest>

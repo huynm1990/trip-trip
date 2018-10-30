@@ -1,15 +1,16 @@
-package com.org.triptrip;
+package com.org.triptrip.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.org.triptrip.adapter.EventsAdapter;
+import com.org.triptrip.R;
+import com.org.triptrip.common.Event;
 
 
 public class EventMaterialFragment extends Fragment {

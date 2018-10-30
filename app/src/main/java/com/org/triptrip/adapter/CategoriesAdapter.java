@@ -1,6 +1,5 @@
-package com.org.triptrip;
+package com.org.triptrip.adapter;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.org.triptrip.R;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
 

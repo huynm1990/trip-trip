@@ -1,4 +1,4 @@
-package com.org.triptrip;
+package com.org.triptrip.common;
 
 /**
  * @author Huy Nguyen

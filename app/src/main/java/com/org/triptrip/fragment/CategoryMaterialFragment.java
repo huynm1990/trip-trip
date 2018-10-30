@@ -1,4 +1,4 @@
-package com.org.triptrip;
+package com.org.triptrip.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.org.triptrip.adapter.CategoriesAdapter;
+import com.org.triptrip.activity.EventsActivity;
+import com.org.triptrip.activity.ExperiencesActivity;
+import com.org.triptrip.activity.QuestionsAnswersActivity;
+import com.org.triptrip.R;
+import com.org.triptrip.activity.ServicesActivity;
+import com.org.triptrip.common.Category;
 
 
 public class CategoryMaterialFragment extends Fragment {

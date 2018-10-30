@@ -1,14 +1,12 @@
-package com.org.triptrip;
+package com.org.triptrip.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.Toast;
+
+import com.org.triptrip.R;
 
 public class MainActivity extends AppCompatActivity {
 

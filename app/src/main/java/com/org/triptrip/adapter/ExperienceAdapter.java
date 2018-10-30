@@ -1,4 +1,4 @@
-package com.org.triptrip;
+package com.org.triptrip.adapter;
 
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.org.triptrip.R;
 
 /**
  * @author Huy Nguyen

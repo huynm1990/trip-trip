@@ -6,10 +6,10 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:gravity="center_horizontal"
 android:orientation="vertical"
-tools:context=".MainActivity">
+tools:context=".activity.MainActivity">
 
     <fragment
-        class="com.org.triptrip.CategoryMaterialFragment"
+        class="com.org.triptrip.fragment.CategoryMaterialFragment"
         android:id="@+id/detail_frag"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

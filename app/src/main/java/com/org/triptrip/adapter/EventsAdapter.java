@@ -1,10 +1,12 @@
-package com.org.triptrip;
+package com.org.triptrip.adapter;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.org.triptrip.R;
 
 /**
  * @author Huy Nguyen
