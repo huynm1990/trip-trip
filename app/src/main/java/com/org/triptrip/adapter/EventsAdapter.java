@@ -1,9 +1,11 @@
 package com.org.triptrip.adapter;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.org.triptrip.R;
@@ -13,16 +15,19 @@ import com.org.triptrip.R;
  */
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
 
-    private String[] dates;
+
     private String[] titles;
     private String[] eventTypes;
     private String[] regions;
+    private String[] fromDates;
+    private String[] toDates;
 
-    public EventsAdapter(String[] dates, String[] titles, String[] eventTypes, String[] regions) {
-        this.dates = dates;
+    public EventsAdapter(String[] titles, String[] eventTypes, String[] regions, String[] fromDates, String[] toDates) {
         this.titles = titles;
         this.eventTypes = eventTypes;
         this.regions = regions;
+        this.fromDates = fromDates;
+        this.toDates = toDates;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -45,22 +50,25 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder viewHolder,final int position) {
         CardView cardView = viewHolder.cardView;
 
-        TextView txtDate = (TextView) cardView.findViewById(R.id.txt_date);
-        txtDate.setText(dates[position]);
-
         TextView txtTitle = (TextView) cardView.findViewById(R.id.txt_title);
         txtTitle.setText(titles[position]);
 
-        TextView txtEventType = (TextView) cardView.findViewById(R.id.txt_event_type_content);
-        txtEventType.setText(eventTypes[position]);
+        TextView txtEventNote = (TextView) cardView.findViewById(R.id.txt_event_note);
+        txtEventNote.setText(eventTypes[position]);
 
-        TextView txtRegion = (TextView) cardView.findViewById(R.id.txt_region_content);
-        txtRegion.setText(regions[position]);
+        TextView txtPlace = (TextView) cardView.findViewById(R.id.txt_place);
+        txtPlace.setText(regions[position]);
+
+        TextView txtFromDate = (TextView) cardView.findViewById(R.id.txt_from_date);
+        txtFromDate.setText(fromDates[position]);
+
+        TextView txtToDate = (TextView) cardView.findViewById(R.id.txt_to_date);
+        txtToDate.setText(toDates[position]);
 
     }
 
     @Override
     public int getItemCount() {
-        return dates.length;
+        return titles.length;
     }
 }
