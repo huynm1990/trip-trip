@@ -17,7 +17,6 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,10 +26,18 @@
         <activity
             android:name=".activity.RegisterActivity"
             android:label="Register" />
-        <activity android:name=".activity.EventsActivity" />
-        <activity android:name=".activity.ExperiencesActivity" />
-        <activity android:name=".activity.ServicesActivity" />
-        <activity android:name=".activity.QuestionsAnswersActivity"></activity>
+        <activity
+            android:name=".activity.EventsActivity"
+            android:label="Events"/>
+        <activity
+            android:name=".activity.ExperiencesActivity"
+            android:label="Experiences"/>
+        <activity
+            android:name=".activity.ServicesActivity"
+            android:label="Services"/>
+        <activity
+            android:name=".activity.QuestionsAnswersActivity"
+            android:label="Q and A"/>
     </application>
 
 </manifest>
