@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        switchFragment(R.id.navigation_events, new EventMaterialFragment());
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -65,15 +66,18 @@ public class MainActivity extends AppCompatActivity
                         return false;
                     }
 
-                    private void switchFragment(int pos, android.support.v4.app.Fragment fragment) {
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.frame_fragmentholder, fragment)
-                                .addToBackStack(null)
-                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                                .commit();
-                    }
                 });
+
+
+    }
+
+    private void switchFragment(int pos, android.support.v4.app.Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_fragmentholder, fragment)
+                .addToBackStack(null)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
     }
 
     @Override
