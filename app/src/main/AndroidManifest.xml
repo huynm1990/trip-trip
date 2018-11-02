@@ -9,12 +9,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/triptrip_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+                  android:label=""
+                  android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,16 +29,16 @@
             android:label="Register" />
         <activity
             android:name=".activity.EventsActivity"
-            android:label="Events"/>
+            android:label="Events" />
         <activity
             android:name=".activity.ExperiencesActivity"
-            android:label="Experiences"/>
+            android:label="Experiences" />
         <activity
             android:name=".activity.ServicesActivity"
-            android:label="Services"/>
+            android:label="Services" />
         <activity
             android:name=".activity.QuestionsAnswersActivity"
-            android:label="Q and A"/>
+            android:label="Q and A" />
     </application>
 
 </manifest>
