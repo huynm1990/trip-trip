@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,11 +20,17 @@ import java.util.List;
  */
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> {
 
-    List<Service> services = new ArrayList<Service>();
+    public interface OnItemClickListener {
+        void onItemClick(Service item);
+    }
+
+    private List<Service> services = new ArrayList<Service>();
+    private OnItemClickListener listener;
 
 
-    public ServicesAdapter(List<Service> services) {
+    public ServicesAdapter(List<Service> services, OnItemClickListener listener) {
         this.services = services;
+        this.listener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,6 +40,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
             super(cardView);
             this.cardView = cardView;
         }
+
     }
 
     @Override
@@ -58,6 +66,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
         TextView txtLocation = (TextView) cardView.findViewById(R.id.txt_location);
         txtLocation.setText(this.services.get(position).getLocation());
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(services.get(position));
+            }
+        });
 
 
     }

@@ -34,8 +34,8 @@
             android:name=".activity.ExperiencesActivity"
             android:label="Experiences" />
         <activity
-            android:name=".activity.ServicesActivity"
-            android:label="Services" />
+            android:name=".activity.ServiceDetailActivity"
+            android:label="Service Detail" />
         <activity
             android:name=".activity.QuestionsAnswersActivity"
             android:label="Q and A" />

@@ -14,7 +14,7 @@ import com.org.triptrip.activity.EventsActivity;
 import com.org.triptrip.activity.ExperiencesActivity;
 import com.org.triptrip.activity.QuestionsAnswersActivity;
 import com.org.triptrip.R;
-import com.org.triptrip.activity.ServicesActivity;
+import com.org.triptrip.activity.ServiceDetailActivity;
 import com.org.triptrip.common.Category;
 
 
@@ -50,7 +50,7 @@ public class CategoryMaterialFragment extends Fragment {
                 } else if (position == 1) {
                     intent = new Intent(getActivity(), ExperiencesActivity.class);
                 } else if (position == 2) {
-                    intent = new Intent(getActivity(), ServicesActivity.class);
+                    intent = new Intent(getActivity(), ServiceDetailActivity.class);
                 } else if (position == 3) {
                     intent = new Intent(getActivity(), QuestionsAnswersActivity.class);
                 }

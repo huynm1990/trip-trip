@@ -6,9 +6,9 @@
     android:orientation="vertical"
     android:padding="5dp">
 
-    <fragment
+    <!--<fragment
         class="com.org.triptrip.fragment.ServiceMaterialFragment"
         android:id="@+id/service_frag"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 </LinearLayout>

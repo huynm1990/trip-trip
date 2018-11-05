@@ -1,5 +1,6 @@
 package com.org.triptrip.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.org.triptrip.adapter.ExperienceAdapter;
+import com.org.triptrip.activity.ServiceDetailActivity;
 import com.org.triptrip.R;
 import com.org.triptrip.adapter.ServicesAdapter;
-import com.org.triptrip.common.Experience;
 import com.org.triptrip.common.Service;
 
 import java.util.ArrayList;
@@ -39,7 +39,13 @@ public class ServiceMaterialFragment extends Fragment {
                     Service.services[i].getEvaluation()));
         }
         
-        ServicesAdapter adapter = new ServicesAdapter(services);
+        ServicesAdapter adapter = new ServicesAdapter(services, new ServicesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Service item) {
+                Intent myIntent = new Intent(getActivity(), ServiceDetailActivity.class);
+                getActivity().startActivity(myIntent);
+            }
+        });
         experienceRecycler.setAdapter(adapter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
