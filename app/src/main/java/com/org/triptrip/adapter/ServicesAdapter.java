@@ -9,27 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.org.triptrip.R;
+import com.org.triptrip.common.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Huy Nguyen
  */
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> {
 
-    private String[] titles;
-    private int[] images;
-    private String[] dateCreated;
-    private String[] phones;
-    private String[] locations;
-    private int[] evaluations;
+    List<Service> services = new ArrayList<Service>();
 
 
-    public ServicesAdapter(String[] titles, int[] images, String[] dateCreated, String[] phones, String[] locations, int[] evaluations) {
-        this.titles = titles;
-        this.images = images;
-        this.dateCreated = dateCreated;
-        this.phones = phones;
-        this.locations = locations;
-        this.evaluations = evaluations;
+    public ServicesAdapter(List<Service> services) {
+        this.services = services;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -53,23 +47,23 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         CardView cardView = viewHolder.cardView;
 
         TextView txtTitle = (TextView) cardView.findViewById(R.id.txt_title);
-        txtTitle.setText(titles[position]);
+        txtTitle.setText(this.services.get(position).getTitle());
 
         ImageView imageView = (ImageView) cardView.findViewById(R.id.img_image);
-        Drawable drawable = cardView.getResources().getDrawable(images[position]);
+        Drawable drawable = cardView.getResources().getDrawable(this.services.get(position).getImage());
         imageView.setImageDrawable(drawable);
 
         TextView txtPhone = (TextView) cardView.findViewById(R.id.txt_phone);
-        txtPhone.setText(phones[position]);
+        txtPhone.setText(this.services.get(position).getPhone());
 
         TextView txtLocation = (TextView) cardView.findViewById(R.id.txt_location);
-        txtLocation.setText(locations[position]);
+        txtLocation.setText(this.services.get(position).getLocation());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return titles.length;
+        return services.size();
     }
 }

@@ -14,6 +14,9 @@ import com.org.triptrip.adapter.ServicesAdapter;
 import com.org.triptrip.common.Experience;
 import com.org.triptrip.common.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ServiceMaterialFragment extends Fragment {
 
@@ -22,24 +25,21 @@ public class ServiceMaterialFragment extends Fragment {
                              Bundle savedInstanceState) {
         RecyclerView experienceRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_service_material, container, false);
 
-        int length = Service.services.length;
-        String[] titles = new String[length];
-        int[] images = new int[length];
-        String[] dateCreated = new String[length];
-        String[] phones = new String[length];
-        String[] locations = new String[length];
-        int[] evaluations = new int[length];
-        for (int i = 0; i < length; i++) {
-            titles[i] = Service.services[i].getTitle();
-            images[i] = Service.services[i].getImage();
-            dateCreated[i] = Service.services[i].getDateCreated();
-            phones[i] = Service.services[i].getPhone();
-            locations[i] = Service.services[i].getLocation();
-            evaluations[i] = Service.services[i].getEvaluation();
+        List<Service> services = new ArrayList<Service>();
+
+        // Replace the code here to call web service
+        // Utils.getService()
+        for (int i = 0; i < Service.services.length; i++) {
+            services.add(new Service(
+                    Service.services[i].getTitle(),
+                    Service.services[i].getImage(),
+                    Service.services[i].getDateCreated(),
+                    Service.services[i].getPhone(),
+                    Service.services[i].getLocation(),
+                    Service.services[i].getEvaluation()));
         }
-
-
-        ServicesAdapter adapter = new ServicesAdapter(titles, images, dateCreated, phones, locations, evaluations);
+        
+        ServicesAdapter adapter = new ServicesAdapter(services);
         experienceRecycler.setAdapter(adapter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
