@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 
 import com.org.triptrip.adapter.ExperienceAdapter;
 import com.org.triptrip.R;
-import com.org.triptrip.common.Experience;
+import com.org.triptrip.common.ExperienceItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ExperienceMaterialFragment extends Fragment {
@@ -20,18 +23,17 @@ public class ExperienceMaterialFragment extends Fragment {
                              Bundle savedInstanceState) {
         RecyclerView experienceRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_experience_material, container, false);
 
-        int length = Experience.experiences.length;
-        String[] titles = new String[length];
-        int[] images = new int[length];
-        String[] dateCreated = new String[length];
-        for (int i = 0; i < length; i++) {
-            titles[i] = Experience.experiences[i].getTitle();
-            images[i] = Experience.experiences[i].getImage();
-            dateCreated[i] = Experience.experiences[i].getDateCreated();
+        List<ExperienceItem> experiences = new ArrayList<ExperienceItem>();
+        for (int i = 0; i < ExperienceItem.experiences.length; i++) {
+            experiences.add(new ExperienceItem(
+                    ExperienceItem.experiences[i].getTitle(),
+                    ExperienceItem.experiences[i].getImage(),
+                    ExperienceItem.experiences[i].getDateCreated()
+            ));
         }
 
 
-        ExperienceAdapter adapter = new ExperienceAdapter(titles, images, dateCreated);
+        ExperienceAdapter adapter = new ExperienceAdapter(experiences, getActivity());
         experienceRecycler.setAdapter(adapter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);

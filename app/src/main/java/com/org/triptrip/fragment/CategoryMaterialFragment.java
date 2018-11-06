@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.org.triptrip.adapter.CategoriesAdapter;
-import com.org.triptrip.activity.EventsActivity;
-import com.org.triptrip.activity.ExperiencesActivity;
+import com.org.triptrip.activity.EventDetailActivity;
+import com.org.triptrip.activity.ExperienceDetailActivity;
 import com.org.triptrip.activity.QuestionsAnswersActivity;
 import com.org.triptrip.R;
 import com.org.triptrip.activity.ServiceDetailActivity;
@@ -46,9 +46,9 @@ public class CategoryMaterialFragment extends Fragment {
             public void onClick(int position) {
                 Intent intent = null;
                 if (position == 0) {
-                    intent = new Intent(getActivity(), EventsActivity.class);
+                    intent = new Intent(getActivity(), EventDetailActivity.class);
                 } else if (position == 1) {
-                    intent = new Intent(getActivity(), ExperiencesActivity.class);
+                    intent = new Intent(getActivity(), ExperienceDetailActivity.class);
                 } else if (position == 2) {
                     intent = new Intent(getActivity(), ServiceDetailActivity.class);
                 } else if (position == 3) {

@@ -28,11 +28,11 @@
             android:name=".activity.RegisterActivity"
             android:label="Register" />
         <activity
-            android:name=".activity.EventsActivity"
-            android:label="Events" />
+            android:name=".activity.EventDetailActivity"
+            android:label="Event Detail" />
         <activity
-            android:name=".activity.ExperiencesActivity"
-            android:label="Experiences" />
+            android:name=".activity.ExperienceDetailActivity"
+            android:label="Experience Detail" />
         <activity
             android:name=".activity.ServiceDetailActivity"
             android:label="Service Detail" />

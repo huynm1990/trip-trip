@@ -1,5 +1,7 @@
 package com.org.triptrip.adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.org.triptrip.R;
-import com.org.triptrip.common.Service;
+import com.org.triptrip.activity.ServiceDetailActivity;
+import com.org.triptrip.common.Item;
+import com.org.triptrip.common.ServiceItem;
+import com.org.triptrip.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,19 +23,15 @@ import java.util.List;
 /**
  * @author Huy Nguyen
  */
-public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> {
+public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder> implements OnItemClickListener {
 
-    public interface OnItemClickListener {
-        void onItemClick(Service item);
-    }
-
-    private List<Service> services = new ArrayList<Service>();
-    private OnItemClickListener listener;
+    private List<ServiceItem> services = new ArrayList<ServiceItem>();
+    private Activity activity;
 
 
-    public ServicesAdapter(List<Service> services, OnItemClickListener listener) {
+    public ServicesAdapter(List<ServiceItem> services, Activity activity) {
         this.services = services;
-        this.listener = listener;
+        this.activity = activity;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -69,7 +70,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                listener.onItemClick(services.get(position));
+                onItemClick(services.get(position));
             }
         });
 
@@ -80,4 +81,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     public int getItemCount() {
         return services.size();
     }
+
+    @Override
+    public void onItemClick(Item item) {
+        Intent myIntent = new Intent(this.activity, ServiceDetailActivity.class);
+        this.activity.startActivity(myIntent);
+    }
+
+
 }

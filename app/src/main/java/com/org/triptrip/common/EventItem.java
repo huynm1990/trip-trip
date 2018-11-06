@@ -3,7 +3,7 @@ package com.org.triptrip.common;
 /**
  * @author Huy Nguyen
  */
-public class Event {
+public class EventItem extends Item {
 
     private String title;
     private String eventType;
@@ -11,11 +11,11 @@ public class Event {
     private String fromDate;
     private String toDate;
 
-    public static final Event[] events = {
-            new Event("Lengends Of Horror", "Festival", "Toronto", "01-Oct-2018", "05-Oct-2018"),
-            new Event("Haunted Corn Maze At Mann Farms", "Halloween", "Vancouver", "07-Nov-2018", "10-Nov-2018"),
-            new Event("Cenesphere Fall Film Series", "Entertaiment", "Toronto", "12-Nov-2018", "16-Nov-2018"),
-            new Event("Halloween Haunted At Canada's Wonderland", "Music", "Vancouver", "01-Dec-2018", "03-Dec-2018")
+    public static final EventItem[] events = {
+            new EventItem("Lengends Of Horror", "Festival", "Toronto", "01-Oct-2018", "05-Oct-2018"),
+            new EventItem("Haunted Corn Maze At Mann Farms", "Halloween", "Vancouver", "07-Nov-2018", "10-Nov-2018"),
+            new EventItem("Cenesphere Fall Film Series", "Entertaiment", "Toronto", "12-Nov-2018", "16-Nov-2018"),
+            new EventItem("Halloween Haunted At Canada's Wonderland", "Music", "Vancouver", "01-Dec-2018", "03-Dec-2018")
     };
 
     /**
@@ -27,7 +27,7 @@ public class Event {
      * @param fromDate from date
      * @param toDate to date
      */
-    public Event(String title, String eventType, String region, String fromDate, String toDate) {
+    public EventItem(String title, String eventType, String region, String fromDate, String toDate) {
         this.title = title;
         this.eventType = eventType;
         this.region = region;

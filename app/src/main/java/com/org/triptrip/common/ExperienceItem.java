@@ -6,17 +6,17 @@ import com.org.triptrip.R;
  * Experience class
  * @author Huy Nguyen
  */
-public class Experience {
+public class ExperienceItem extends Item {
 
     private String title;
     private int image;
     private String dateCreated;
 
-    public static final Experience[] experiences = {
-            new Experience("Lengends Of Horror", R.drawable.travel_discussion,"28-Oct-2018"),
-            new Experience("Haunted Corn Maze At Mann Farms", R.drawable.travel_experience,"29-Oct-2018"),
-            new Experience("Cenesphere Fall Film Series", R.drawable.travel_guideline, "30-Oct-2018"),
-            new Experience("Halloween Haunted At Canada's Wonderland", R.drawable.travel_services, "31-Oct-2018")
+    public static final ExperienceItem[] experiences = {
+            new ExperienceItem("Lengends Of Horror", R.drawable.travel_discussion,"28-Oct-2018"),
+            new ExperienceItem("Haunted Corn Maze At Mann Farms", R.drawable.travel_experience,"29-Oct-2018"),
+            new ExperienceItem("Cenesphere Fall Film Series", R.drawable.travel_guideline, "30-Oct-2018"),
+            new ExperienceItem("Halloween Haunted At Canada's Wonderland", R.drawable.travel_services, "31-Oct-2018")
     };
 
     /**
@@ -25,7 +25,7 @@ public class Experience {
      * @param image
      * @param dateCreated
      */
-    public Experience(String title, int image, String dateCreated) {
+    public ExperienceItem(String title, int image, String dateCreated) {
         this.title = title;
         this.image = image;
         this.dateCreated = dateCreated;

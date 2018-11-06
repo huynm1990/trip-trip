@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 
 import com.org.triptrip.adapter.EventsAdapter;
 import com.org.triptrip.R;
-import com.org.triptrip.common.Event;
+import com.org.triptrip.common.EventItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class EventMaterialFragment extends Fragment {
@@ -20,22 +23,21 @@ public class EventMaterialFragment extends Fragment {
                              Bundle savedInstanceState) {
         RecyclerView eventRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_event_material, container, false);
 
+        List<EventItem> events = new ArrayList<EventItem>();
 
-        String[] titles = new String[Event.events.length];
-        String[] eventTypes = new String[Event.events.length];
-        String[] regions = new String[Event.events.length];
-        String[] fromDates = new String[Event.events.length];
-        String[] toDates = new String[Event.events.length];
-        for (int i = 0; i < Event.events.length; i++) {
-            titles[i] = Event.events[i].getTitle();
-            eventTypes[i] = Event.events[i].getEventType();
-            regions[i] = Event.events[i].getRegion();
-            fromDates[i] = Event.events[i].getFromDate();
-            toDates[i] = Event.events[i].getToDate();
+        for (int i = 0; i < EventItem.events.length; i++) {
+            events.add(new EventItem(
+                    EventItem.events[i].getTitle(),
+                    EventItem.events[i].getEventType(),
+                    EventItem.events[i].getRegion(),
+                    EventItem.events[i].getFromDate(),
+                    EventItem.events[i].getToDate()
+            ));
+
         }
 
 
-        EventsAdapter adapter = new EventsAdapter(titles, eventTypes, regions, fromDates, toDates);
+        EventsAdapter adapter = new EventsAdapter(events, getActivity());
         eventRecycler.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

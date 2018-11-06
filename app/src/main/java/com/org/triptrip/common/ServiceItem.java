@@ -5,7 +5,7 @@ import com.org.triptrip.R;
 /**
  * @author Huy Nguyen
  */
-public class Service {
+public class ServiceItem extends Item {
 
     private String title;
     private int image;
@@ -14,11 +14,11 @@ public class Service {
     private String location;
     private int evaluation;
 
-    public static final Service[] services = {
-            new Service("Lengends Of Horror", R.drawable.travel_discussion,"28-Oct-2018", "0903999888", "Ha Noi", 10),
-            new Service("Haunted Corn Maze At Mann Farms", R.drawable.travel_experience,"29-Oct-2018", "0903999777", "Hai Phong", 10),
-            new Service("Cenesphere Fall Film Series", R.drawable.travel_guideline, "30-Oct-2018", "0903999666", "Da Nang", 10),
-            new Service("Halloween Haunted At Canada's Wonderland", R.drawable.travel_services, "31-Oct-2018", "0903999555", "Ho Chi Minh", 10)
+    public static final ServiceItem[] services = {
+            new ServiceItem("Lengends Of Horror", R.drawable.travel_discussion,"28-Oct-2018", "0903999888", "Ha Noi", 10),
+            new ServiceItem("Haunted Corn Maze At Mann Farms", R.drawable.travel_experience,"29-Oct-2018", "0903999777", "Hai Phong", 10),
+            new ServiceItem("Cenesphere Fall Film Series", R.drawable.travel_guideline, "30-Oct-2018", "0903999666", "Da Nang", 10),
+            new ServiceItem("Halloween Haunted At Canada's Wonderland", R.drawable.travel_services, "31-Oct-2018", "0903999555", "Ho Chi Minh", 10)
     };
 
     /**
@@ -30,7 +30,7 @@ public class Service {
      * @param location
      * @param evaluation
      */
-    public Service(String title, int image, String dateCreated, String phone, String location, int evaluation) {
+    public ServiceItem(String title, int image, String dateCreated, String phone, String location, int evaluation) {
         this.title = title;
         this.image = image;
         this.dateCreated = dateCreated;
