@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
+    private static int navigationId = R.id.navigation_events;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,41 +40,40 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        switchFragment(R.id.navigation_events, new EventMaterialFragment());
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
-
+        switchFragment(navigationId);
+        bottomNavigationView.setSelectedItemId(navigationId);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem item) {
-                        Fragment fragment;
-
-                        switch (item.getItemId()) {
-                            case R.id.navigation_events:
-                                switchFragment(R.id.navigation_events, new EventMaterialFragment());
-                                return true;
-                            case R.id.navigation_services:
-                                switchFragment(R.id.navigation_events, new ServiceMaterialFragment());
-                                return true;
-                            case R.id.navigation_experiences:
-                                switchFragment(R.id.navigation_events, new ExperienceMaterialFragment());
-                                return true;
-                        }
-                        return false;
+                        return switchFragment(item.getItemId());
                     }
 
                 });
 
-
     }
 
-    private void switchFragment(int pos, android.support.v4.app.Fragment fragment) {
+    private boolean switchFragment(int pos) {
+        navigationId = pos;
+        android.support.v4.app.Fragment fragment = null;
+        if (pos == R.id.navigation_events) {
+            fragment = new EventMaterialFragment();
+        } else if (pos == R.id.navigation_services) {
+            fragment = new ServiceMaterialFragment();
+        } else if (pos == R.id.navigation_experiences) {
+            fragment = new ExperienceMaterialFragment();
+        }
+        if (fragment == null) {
+            return false;
+        }
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_fragmentholder, fragment)
-                .addToBackStack(null)
+                /*.addToBackStack(null)*/
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+        return true;
     }
 
     @Override
