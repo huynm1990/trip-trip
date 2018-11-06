@@ -17,7 +17,6 @@ import com.org.triptrip.common.ExperienceItem;
 import com.org.triptrip.common.Item;
 import com.org.triptrip.listener.OnItemClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
