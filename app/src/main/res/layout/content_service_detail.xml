@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.ServiceDetailActivity"
+    tools:showIn="@layout/activity_service_detail"
+    android:columnCount="2"
+    android:rowCount="7" >
+
+    <TextView
+        android:id="@+id/txt_img"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:textStyle="italic"
+        android:textSize="10sp"/>
+
+    <ImageView
+        android:id="@+id/img_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:src="@drawable/ic_event_note_black_24dp"/>
+
+    <TextView
+        android:id="@+id/txt_description"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:textStyle="bold"
+        android:text="OXYGEN YOGA AND FITNESS REWARDS.\nEarn $10 OFF when you spend $200.\nEarn rewards at Oxygen Yoga by paying with Glance Pay.\nSpend $200 at Oxygen Yoga and you'll get $10 OFF your next order.\n"/>
+
+
+    <ImageView
+        android:id="@+id/img_event_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:src="@drawable/ic_event_note_black_24dp"/>
+
+    <TextView
+        android:id="@+id/txt_event_note"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:textStyle="italic"
+        android:textSize="10sp"/>
+
+    <ImageView
+        android:id="@+id/img_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:src="@drawable/ic_place_black_24dp"/>
+
+    <TextView
+        android:id="@+id/txt_place"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:textStyle="italic"
+        android:textSize="10sp"/>
+
+    <ImageView
+        android:id="@+id/img_date_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:src="@drawable/ic_date_range_black_24dp"/>
+
+    <TextView
+        android:id="@+id/txt_from_date"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:textStyle="italic"
+        android:textSize="10sp"/>
+
+    <ImageView
+        android:id="@+id/img_date_range_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:src="@drawable/ic_date_range_black_24dp"/>
+
+    <TextView
+        android:id="@+id/txt_from_date_1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="5"
+        android:layout_column="1"
+        android:textStyle="italic"
+        android:textSize="10sp"/>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:layout_columnSpan="2" />
+
+
+</GridLayout>
