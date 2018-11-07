@@ -44,7 +44,7 @@
             android:layout_marginLeft="5dp"
             android:layout_row="3"
             android:layout_column="0"
-            android:src="@drawable/ic_phone_black_24dp"/>
+            android:src="@drawable/ic_phone_black_15dp"/>
 
         <TextView
             android:id="@+id/txt_phone"
@@ -66,7 +66,7 @@
             android:layout_marginLeft="5dp"
             android:layout_row="4"
             android:layout_column="0"
-            android:src="@drawable/ic_place_black_24dp"/>
+            android:src="@drawable/ic_place_black_15dp"/>
 
         <TextView
             android:id="@+id/txt_location"

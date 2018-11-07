@@ -8,4 +8,5 @@
     <color name="colorLoginLinkedIn">#1f88be</color>
     <color name="colorMain">#308be6</color>
     <color name="white">#ffffff</color>
+    <color name="textBackground">#186CA5</color>
 </resources>

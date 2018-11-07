@@ -35,7 +35,7 @@
             android:layout_marginLeft="5dp"
             android:layout_row="1"
             android:layout_column="0"
-            android:src="@drawable/ic_event_note_black_24dp"/>
+            android:src="@drawable/ic_event_note_black_15dp"/>
 
         <TextView
             android:id="@+id/txt_event_note"
@@ -56,7 +56,7 @@
             android:layout_marginLeft="5dp"
             android:layout_row="2"
             android:layout_column="0"
-            android:src="@drawable/ic_place_black_24dp"/>
+            android:src="@drawable/ic_place_black_15dp"/>
 
         <TextView
             android:id="@+id/txt_place"
@@ -77,7 +77,7 @@
             android:layout_marginLeft="5dp"
             android:layout_row="3"
             android:layout_column="0"
-            android:src="@drawable/ic_date_range_black_24dp"/>
+            android:src="@drawable/ic_date_range_black_15dp"/>
 
         <TextView
             android:id="@+id/txt_from_date"
