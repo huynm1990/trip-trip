@@ -19,9 +19,8 @@ import com.org.triptrip.R;
 import java.util.List;
 
 public class ServiceDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
-    private MapView mapView;
-    private GoogleMap mMap;
 
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +32,9 @@ public class ServiceDetailActivity extends AppCompatActivity implements OnMapRea
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
 
     }
 
