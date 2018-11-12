@@ -1,5 +1,8 @@
 package com.org.triptrip.activity;
 
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +17,8 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.org.triptrip.R;
+
+import java.util.List;
 
 public class ServiceDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mapView;
@@ -44,9 +49,37 @@ public class ServiceDetailActivity extends AppCompatActivity implements OnMapRea
         mMap = googleMap;
 
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng address = getLocationFromAddress(this, "434 Eglinton Ave W. Toronto, ON");
+        mMap.addMarker(new MarkerOptions().position(address).title("Oxygen Yoga and Fitness"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(address, 15f));
+
+    }
+
+
+    public LatLng getLocationFromAddress(Context context, String strAddress)
+    {
+        Geocoder coder= new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try
+        {
+            address = coder.getFromLocationName(strAddress, 5);
+            if(address==null)
+            {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return p1;
 
     }
 }

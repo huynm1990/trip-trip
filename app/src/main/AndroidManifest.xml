@@ -27,6 +27,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <!--https://console.cloud.google.com/google/maps-apis/apis/maps-android-backend.googleapis.com/metrics?project=triptrip-map&duration=PT6H
+        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBIem6sGgC0gh7ozXxCKfPzarZKFFJYRKw"/>
