@@ -31,8 +31,6 @@ public class ServiceDetailActivity extends AppCompatActivity implements OnMapRea
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /*mapView = findViewById(R.id.map_view);
-        mapView.getMapAsync(this);*/
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -43,28 +41,10 @@ public class ServiceDetailActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        /*gmap = googleMap;
-        gmap.setMinZoomPreference(12);
-
-        gmap.setIndoorEnabled(true);
-        UiSettings uiSettings = gmap.getUiSettings();
-        uiSettings.setIndoorLevelPickerEnabled(true);
-        uiSettings.setMyLocationButtonEnabled(true);
-        uiSettings.setMapToolbarEnabled(true);
-        uiSettings.setCompassEnabled(true);
-        uiSettings.setZoomControlsEnabled(true);
-
-        LatLng ny = new LatLng(40.7143528, -74.0059731);
-
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(ny);
-        gmap.addMarker(markerOptions);
-
-        gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));*/
         mMap = googleMap;
 
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(-33.852, 151.211);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
