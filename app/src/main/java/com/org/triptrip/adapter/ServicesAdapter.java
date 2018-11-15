@@ -34,6 +34,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         this.activity = activity;
     }
 
+    public List<ServiceItem> getServices() {
+        return services;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardView;
 
