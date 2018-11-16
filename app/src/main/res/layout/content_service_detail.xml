@@ -1,147 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_service_detail_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.ServiceDetailActivity"
     tools:showIn="@layout/activity_service_detail"
-    android:columnCount="2"
-    android:rowCount="7"
-    android:background="@color/white">
-
-    <ImageView
-        android:id="@+id/img_title"
-        android:layout_width="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:src="@drawable/ic_phone_black_24dp"/>
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@color/white">
 
-    <TextView
-        android:id="@+id/txt_img"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:textStyle="normal"
-        android:textSize="12sp"
-        android:layout_gravity="fill_vertical"
-        android:text="Improve your workout results with Oxygen Yoga Fitness Far Infrared Hot Yoga and Fusiion Fitness"/>
+        <ImageView
+            android:id="@+id/img_title"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/triptrip_logo"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/txt_img"/>
 
-    <TextView
-        android:id="@+id/txt_description"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_columnSpan="2"
-        android:textStyle="bold"
-        android:text="OXYGEN YOGA AND FITNESS REWARDS.\nEarn $10 OFF when you spend $200.\nEarn rewards at Oxygen Yoga by paying with Glance Pay.\nSpend $200 at Oxygen Yoga and you'll get $10 OFF your next order.\n"/>
+        <TextView
+            android:id="@+id/txt_img"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textSize="13sp"
+            android:text="Improve your workout results with Oxygen Yoga Fitness Far Infrared Hot Yoga and Fusiion Fitness"/>
+    </RelativeLayout>
 
-
-    <ImageView
-        android:id="@+id/img_service_detail_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:src="@drawable/ic_phone_black_24dp"/>
-
-    <TextView
-        android:id="@+id/txt_event_note"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="1"
-        android:textStyle="italic"
-        android:textSize="10sp"
-        android:text="866 569 9436"/>
-
-    <ImageView
-        android:id="@+id/img_service_detail_web"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:src="@drawable/ic_web_black_24dp"/>
-
-    <TextView
-        android:id="@+id/txt_place"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="1"
-        android:textStyle="italic"
-        android:textSize="10sp"
-        android:text="Website" />
-
-    <ImageView
-        android:id="@+id/img_date_range"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_row="4"
-        android:layout_column="0"
-        android:src="@drawable/ic_mail_outline_black_24dp"/>
-
-    <TextView
-        android:id="@+id/txt_from_date"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="4"
-        android:layout_column="1"
-        android:textStyle="italic"
-        android:textSize="10sp"
-        android:text="oxygenfranchises@gmail.com" />
-
-    <ImageView
-        android:id="@+id/img_date_range_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_row="5"
-        android:layout_column="0"
-        android:src="@drawable/ic_place_black_24dp"/>
-
-    <TextView
-        android:id="@+id/txt_from_date_1"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="1"
-        android:textStyle="italic"
-        android:textSize="10sp"
-        android:text="434 Eglinton Ave W.Toronto, ON" />
-
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="fill"
-        android:layout_row="6"
-        android:layout_column="0"
-        android:layout_columnSpan="2"
-        android:id="@+id/map"
-        tools:context=".activity.ServiceDetailActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:columnCount="2"
+        android:rowCount="7"
+        android:background="@color/white">
 
-</GridLayout>
+        <TextView
+            android:id="@+id/txt_description"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:textStyle="bold"
+            android:background="@color/textBackground"
+            android:text="OXYGEN YOGA AND FITNESS REWARDS.\nEarn $10 OFF when you spend $200.\nEarn rewards at Oxygen Yoga by paying with Glance Pay.\nSpend $200 at Oxygen Yoga and you'll get $10 OFF your next order.\n"/>
+
+
+        <ImageView
+            android:id="@+id/img_service_detail_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:src="@drawable/ic_phone_black_24dp"/>
+
+        <TextView
+            android:id="@+id/txt_event_note"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:textSize="12sp"
+            android:text="866 569 9436"/>
+
+        <ImageView
+            android:id="@+id/img_service_detail_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:src="@drawable/ic_web_black_24dp"/>
+
+        <TextView
+            android:id="@+id/txt_place"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:textSize="12sp"
+            android:text="Website" />
+
+        <ImageView
+            android:id="@+id/img_date_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:src="@drawable/ic_mail_outline_black_24dp"/>
+
+        <TextView
+            android:id="@+id/txt_from_date"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="72dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:textSize="12sp"
+            android:text="oxygenfranchises@gmail.com" />
+
+        <ImageView
+            android:id="@+id/img_date_range_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:src="@drawable/ic_place_black_24dp"/>
+
+        <TextView
+            android:id="@+id/txt_from_date_1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="72dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:textSize="12sp"
+            android:text="434 Eglinton Ave W.Toronto, ON" />
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill"
+            android:layout_row="6"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_marginTop="5dp"
+            android:id="@+id/map"
+            tools:context=".activity.ServiceDetailActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    </GridLayout>
+
+</LinearLayout>

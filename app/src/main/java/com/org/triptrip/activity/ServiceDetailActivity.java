@@ -27,6 +27,7 @@ public class ServiceDetailActivity extends AppCompatActivity implements OnMapRea
         setContentView(R.layout.activity_service_detail);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar.setTitle("Oxygen Yoga and Fitness");
         setSupportActionBar(myToolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
