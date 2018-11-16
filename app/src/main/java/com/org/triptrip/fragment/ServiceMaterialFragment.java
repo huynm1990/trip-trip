@@ -32,7 +32,7 @@ public class ServiceMaterialFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final RecyclerView experienceRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_service_material, container, false);
+        final RecyclerView serviceRecycler = (RecyclerView) inflater.inflate(R.layout.fragment_service_material, container, false);
 
         String url = "items?page=" + 0 + "&size=10&sort=updated,desc&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22}]";
         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
@@ -46,10 +46,10 @@ public class ServiceMaterialFragment extends Fragment {
                 List<ServiceItem> itemFirstTime = getItems(jsonItems);
                 Log.e("onJSON size", Integer.toString(itemFirstTime.size()));
                 final ServicesAdapter adapter = new ServicesAdapter(itemFirstTime, getActivity());
-                experienceRecycler.setAdapter(adapter);
+                serviceRecycler.setAdapter(adapter);
 
                 GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-                experienceRecycler.setLayoutManager(layoutManager);
+                serviceRecycler.setLayoutManager(layoutManager);
 
                 EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
                     @Override
@@ -79,11 +79,11 @@ public class ServiceMaterialFragment extends Fragment {
 
                     }
                 };
-                experienceRecycler.addOnScrollListener(scrollListener);
+                serviceRecycler.addOnScrollListener(scrollListener);
             }
         });
 
-        return experienceRecycler;
+        return serviceRecycler;
     }
 
     public List<ServiceItem> getItems(JSONArray jsonItems) {

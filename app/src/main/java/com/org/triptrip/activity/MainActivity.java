@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
         }
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_fragmentholder, fragment)
+                .replace(R.id.frame_content, fragment)
                 /*.addToBackStack(null)*/
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
