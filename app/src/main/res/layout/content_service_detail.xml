@@ -5,39 +5,37 @@
     android:id="@+id/content_service_detail_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.ServiceDetailActivity"
     tools:showIn="@layout/activity_service_detail"
     android:orientation="vertical">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txt_img"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textSize="13sp"
+            android:layout_gravity="left"
+            android:text="Improve your workout results with Oxygen Yoga Fitness Far Infrared Hot Yoga and Fusiion Fitness"/>
 
         <ImageView
             android:id="@+id/img_title"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="20dp"
             android:src="@drawable/triptrip_logo"
-            android:layout_alignParentRight="true"
-            android:layout_alignRight="@+id/txt_img"/>
-
-        <TextView
-            android:id="@+id/txt_img"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="62dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="normal"
-            android:textSize="13sp"
-            android:text="Improve your workout results with Oxygen Yoga Fitness Far Infrared Hot Yoga and Fusiion Fitness"/>
-    </RelativeLayout>
+            />
+    </LinearLayout>
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
