@@ -72,6 +72,62 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         TextView txtLocation = (TextView) cardView.findViewById(R.id.txt_location);
         txtLocation.setText(this.services.get(position).getLocation());
 
+        for (int i = 0; i < this.services.get(position).getRating(); i++) {
+            switch (i) {
+                case 0:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 1:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite1);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 2:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite2);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 3:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite3);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 4:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite4);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 5:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite5);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 6:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite6);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 7:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite7);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 8:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite8);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+                case 9:
+                    imageView = (ImageView) cardView.findViewById(R.id.img_favorite9);
+                    drawable = cardView.getResources().getDrawable(R.drawable.ic_favorite_full_10dp);
+                    imageView.setImageDrawable(drawable);
+                    ;
+            }
+
+        }
+
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 onItemClick(services.get(position));

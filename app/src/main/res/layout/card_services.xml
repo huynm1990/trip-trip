@@ -88,70 +88,70 @@
             android:layout_marginLeft="9dp"
             android:layout_row="5"
             android:layout_column="0"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="1"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="2"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="3"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="4"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="5"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="6"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="7"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="8"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
         <ImageView
             android:id="@+id/img_favorite9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="5"
             android:layout_column="9"
-            android:src="@drawable/ic_favorite_black_10dp"/>
+            android:src="@drawable/ic_favorite_border_10dp"/>
 
     </GridLayout>
 

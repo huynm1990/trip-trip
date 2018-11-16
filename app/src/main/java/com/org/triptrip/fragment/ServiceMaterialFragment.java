@@ -98,7 +98,7 @@ public class ServiceMaterialFragment extends Fragment {
                         ServiceItem.services[0].getDateCreated(),
                         ServiceItem.services[0].getPhone(),
                         ServiceItem.services[0].getLocation(),
-                        ServiceItem.services[0].getEvaluation()));
+                        ServiceItem.services[0].getRating()));
             } catch (Exception ex) {
 
             }
