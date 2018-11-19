@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.org.triptrip.R;
 import com.org.triptrip.fragment.EventMaterialFragment;
 import com.org.triptrip.fragment.ExperienceMaterialFragment;
+import com.org.triptrip.fragment.ServiceFilterFragment;
 import com.org.triptrip.fragment.ServiceMaterialFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
+        switchFilterFragment(navigationId);
         switchFragment(navigationId);
         bottomNavigationView.setSelectedItemId(navigationId);
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -51,6 +53,28 @@ public class MainActivity extends AppCompatActivity
 
                 });
 
+    }
+
+    private boolean switchFilterFragment(int pos) {
+        android.support.v4.app.Fragment fragment = null;
+        /*if (pos == R.id.navigation_events) {
+            fragment = new EventMaterialFragment();
+        } else if (pos == R.id.navigation_services) {
+            fragment = new ServiceMaterialFragment();
+        } else if (pos == R.id.navigation_experiences) {
+            fragment = new ExperienceMaterialFragment();
+        }*/
+        fragment = new ServiceFilterFragment();
+        if (fragment == null) {
+            return false;
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_service_filter, fragment)
+                /*.addToBackStack(null)*/
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+        return true;
     }
 
     private boolean switchFragment(int pos) {
@@ -68,7 +92,7 @@ public class MainActivity extends AppCompatActivity
         }
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_content, fragment)
+                .replace(R.id.frame_category_content, fragment)
                 /*.addToBackStack(null)*/
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
