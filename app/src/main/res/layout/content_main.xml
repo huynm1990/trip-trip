@@ -22,12 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="right">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Order" />
+        android:gravity="right"
+        android:background="#ffffff">
         <Spinner
+            android:id="@+id/spinner_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

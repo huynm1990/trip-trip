@@ -11,12 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Spinner;
 
 import com.org.triptrip.R;
+import com.org.triptrip.adapter.OrderSpinnerAdapter;
+import com.org.triptrip.common.OrderItem;
 import com.org.triptrip.fragment.EventMaterialFragment;
 import com.org.triptrip.fragment.ExperienceMaterialFragment;
 import com.org.triptrip.fragment.ServiceFilterFragment;
 import com.org.triptrip.fragment.ServiceMaterialFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +48,17 @@ public class MainActivity extends AppCompatActivity
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         switchFilterFragment(navigationId);
+        /**
+         * Load spinner
+         */
+        Spinner spin = (Spinner) findViewById(R.id.spinner_order);
+        List<OrderItem> items = new ArrayList<OrderItem>();
+        for (int i = 0; i < OrderItem.items.length; i++) {
+            items.add(new OrderItem(OrderItem.items[i].getFlag(), OrderItem.items[i].getTitle()));
+        }
+        OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getApplicationContext(), items);
+        spin.setAdapter(orderSpinnerAdapter);
+
         switchFragment(navigationId);
         bottomNavigationView.setSelectedItemId(navigationId);
         bottomNavigationView.setOnNavigationItemSelectedListener(

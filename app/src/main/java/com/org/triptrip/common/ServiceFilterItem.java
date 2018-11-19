@@ -16,10 +16,8 @@ public class ServiceFilterItem {
             new ServiceFilterItem("Hotel", R.drawable.ic_hotel_48dp),
             new ServiceFilterItem("Restaurant", R.drawable.ic_restaurant_48dp),
             new ServiceFilterItem("Subway", R.drawable.ic_subway_48dp),
-            new ServiceFilterItem("Restaurant", R.drawable.ic_restaurant_48dp),
-            new ServiceFilterItem("Subway", R.drawable.ic_subway_48dp),
-            new ServiceFilterItem("Restaurant", R.drawable.ic_restaurant_48dp),
-            new ServiceFilterItem("Subway", R.drawable.ic_subway_48dp)
+            new ServiceFilterItem("Boat", R.drawable.ic_directions_boat_48dp),
+            new ServiceFilterItem("Taxi", R.drawable.ic_local_taxi_48dp),
     };
 
     public ServiceFilterItem(String title, int image) {
