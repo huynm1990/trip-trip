@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         Spinner spin = (Spinner) findViewById(R.id.spinner_order);
         List<OrderItem> items = new ArrayList<OrderItem>();
         for (int i = 0; i < OrderItem.items.length; i++) {
-            items.add(new OrderItem(OrderItem.items[i].getFlag(), OrderItem.items[i].getTitle()));
+            items.add(new OrderItem(OrderItem.items[i].getKeyword(), OrderItem.items[i].getImage(), OrderItem.items[i].getTitle()));
         }
         OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getApplicationContext(), items);
         spin.setAdapter(orderSpinnerAdapter);

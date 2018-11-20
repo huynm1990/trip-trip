@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.org.triptrip.R;
-import com.org.triptrip.adapter.EventsAdapter;
 import com.org.triptrip.adapter.ServiceFilterAdapter;
-import com.org.triptrip.common.EventItem;
 import com.org.triptrip.common.ServiceFilterItem;
 
 import java.util.ArrayList;
@@ -40,7 +38,7 @@ public class ServiceFilterFragment extends Fragment {
 
         for (int i = 0; i < ServiceFilterItem.items.length; i++) {
             items.add(new ServiceFilterItem(
-                    ServiceFilterItem.items[i].getTitle(),
+                    ServiceFilterItem.items[i].getKeywork(),
                     ServiceFilterItem.items[i].getImage()
             ));
 

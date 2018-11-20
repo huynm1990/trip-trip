@@ -45,7 +45,7 @@ public class OrderSpinnerAdapter extends BaseAdapter {
         view = inflter.inflate(R.layout.spinner_order_layout, null);
         ImageView icon = (ImageView) view.findViewById(R.id.imageView);
         TextView names = (TextView) view.findViewById(R.id.textView);
-        icon.setImageResource(items.get(i).getFlag());
+        icon.setImageResource(items.get(i).getImage());
         names.setText(items.get(i).getTitle());
         return view;
     }
