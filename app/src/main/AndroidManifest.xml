@@ -34,7 +34,8 @@
             android:value="AIzaSyBIem6sGgC0gh7ozXxCKfPzarZKFFJYRKw"/>
         <activity android:name=".activity.MainActivity"
                   android:label=""
-                  android:theme="@style/AppTheme.NoActionBar">
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
