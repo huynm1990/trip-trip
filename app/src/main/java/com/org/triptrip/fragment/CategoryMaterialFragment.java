@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.org.triptrip.adapter.CategoriesAdapter;
 import com.org.triptrip.activity.EventDetailActivity;
 import com.org.triptrip.activity.ExperienceDetailActivity;
-import com.org.triptrip.activity.QuestionsAnswersActivity;
 import com.org.triptrip.R;
 import com.org.triptrip.activity.ServiceDetailActivity;
 import com.org.triptrip.common.Category;
@@ -51,8 +50,6 @@ public class CategoryMaterialFragment extends Fragment {
                     intent = new Intent(getActivity(), ExperienceDetailActivity.class);
                 } else if (position == 2) {
                     intent = new Intent(getActivity(), ServiceDetailActivity.class);
-                } else if (position == 3) {
-                    intent = new Intent(getActivity(), QuestionsAnswersActivity.class);
                 }
                 getActivity().startActivity(intent);
 

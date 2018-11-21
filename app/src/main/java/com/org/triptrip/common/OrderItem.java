@@ -2,7 +2,7 @@ package com.org.triptrip.common;
 
 import com.org.triptrip.R;
 
-public class OrderItem {
+public class OrderItem extends Item {
 
     private String keyword;
     private int img;

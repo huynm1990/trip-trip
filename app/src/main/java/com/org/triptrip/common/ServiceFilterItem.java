@@ -6,7 +6,7 @@ import com.org.triptrip.R;
  * Service Filter Item
  * @author Huy Nguyen
  */
-public class ServiceFilterItem {
+public class ServiceFilterItem extends Item {
 
     String keywork;
     int image;
