@@ -45,28 +45,19 @@ public class MainActivity extends AppCompatActivity
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        /*ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar,  R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();*/
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
-        switchFilterFragment(navigationId);
-        /**
-         * Load spinner
-         */
-        Spinner spin = (Spinner) findViewById(R.id.spinner_order);
-        List<OrderItem> items = new ArrayList<OrderItem>();
-        for (int i = 0; i < OrderItem.items.length; i++) {
-            items.add(new OrderItem(OrderItem.items[i].getKeyword(), OrderItem.items[i].getImage(), OrderItem.items[i].getTitle()));
-        }
-        OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getApplicationContext(), items);
-        spin.setAdapter(orderSpinnerAdapter);
 
+        /**
+         * Load filter fragment
+         */
+        switchFilterFragment(navigationId);
+
+        /**
+         * Load main content fragment
+         */
         switchFragment(navigationId);
         bottomNavigationView.setSelectedItemId(navigationId);
         bottomNavigationView.setOnNavigationItemSelectedListener(
