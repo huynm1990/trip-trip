@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -17,14 +16,14 @@ import android.widget.ArrayAdapter;
 
 import com.org.triptrip.R;
 import com.org.triptrip.fragment.ContentFragment;
-import com.org.triptrip.fragment.ServiceFilterFragment;
+import com.org.triptrip.fragment.FilterFragment;
 
 /**
  * Main activity
  * @author Huy Nguyen
  */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FilterFragment.SpinnerItemListener {
 
     private BottomNavigationView bottomNavigationView;
     DrawerLayout drawer;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         loadFilterFragment(navigationId);
 
         // Load main content
-        loadContentFragment(navigationId);
+        loadContentFragment(navigationId, 0);
 
         // Load bottom navigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
@@ -62,7 +61,8 @@ public class MainActivity extends AppCompatActivity
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem item) {
-                        return loadContentFragment(item.getItemId());
+                        navigationId = item.getItemId();
+                        return loadContentFragment(item.getItemId(), 0);
                     }
 
                 });
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity
      */
     private boolean loadFilterFragment(int pos) {
         android.support.v4.app.Fragment fragment = null;
-        fragment = new ServiceFilterFragment();
+        fragment = new FilterFragment();
         if (fragment == null) {
             return false;
         }
@@ -95,12 +95,13 @@ public class MainActivity extends AppCompatActivity
      * @param contentId
      * @return true/false
      */
-    private boolean loadContentFragment(int contentId) {
+    private boolean loadContentFragment(int contentId, int sortId) {
         ContentFragment contentFragment = new ContentFragment();
         if (contentFragment == null) {
             return false;
         }
         contentFragment.setContentId(contentId);
+        contentFragment.setSortId(sortId);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_main_content, contentFragment)
@@ -185,5 +186,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onSpinnerItemSelected(int id) {
+        loadContentFragment(navigationId, id);
     }
 }

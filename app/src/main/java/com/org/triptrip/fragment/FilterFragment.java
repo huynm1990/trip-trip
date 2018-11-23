@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -22,15 +23,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Service Filter Fragment
+ * Filter Fragment
  * @author Huy Nguyen
  */
-public class ServiceFilterFragment extends Fragment {
+public class FilterFragment extends Fragment {
 
+    public static interface SpinnerItemListener {
+        void onSpinnerItemSelected(int id);
+    }
+
+    private SpinnerItemListener listener;
 
     private int filterId;
 
-    public ServiceFilterFragment() {
+    public FilterFragment() {
         // Required empty public constructor
     }
 
@@ -74,6 +80,23 @@ public class ServiceFilterFragment extends Fragment {
 
         OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getActivity().getApplicationContext(), spinnerItems);
         spin.setAdapter(orderSpinnerAdapter);
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                listener.onSpinnerItemSelected(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.listener = (SpinnerItemListener) getActivity();
     }
 
     public void setFilterId(int filterId) {
