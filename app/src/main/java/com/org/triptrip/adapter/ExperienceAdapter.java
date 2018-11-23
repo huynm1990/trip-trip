@@ -81,4 +81,8 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Vi
         Intent myIntent = new Intent(this.activity, ExperienceDetailActivity.class);
         this.activity.startActivity(myIntent);
     }
+
+    public List<ExperienceItem> getExperiences() {
+        return experiences;
+    }
 }
