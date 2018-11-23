@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
 
+        // Initial DrawerLayout
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -68,21 +69,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private boolean loadContentFragment(int contentId) {
-        ContentFragment contentFragment = new ContentFragment();
-        if (contentFragment == null) {
-            return false;
-        }
-        contentFragment.setContentId(contentId);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frame_main_content, contentFragment)
-                /*.addToBackStack(null)*/
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .commit();
-        return true;
-    }
 
+    /**
+     * Load filter fragment
+     * @param pos
+     * @return true/false
+     */
     private boolean loadFilterFragment(int pos) {
         android.support.v4.app.Fragment fragment = null;
         fragment = new ServiceFilterFragment();
@@ -92,6 +84,26 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_service_filter, fragment)
+                /*.addToBackStack(null)*/
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+        return true;
+    }
+
+    /**
+     * Load content fragment
+     * @param contentId
+     * @return true/false
+     */
+    private boolean loadContentFragment(int contentId) {
+        ContentFragment contentFragment = new ContentFragment();
+        if (contentFragment == null) {
+            return false;
+        }
+        contentFragment.setContentId(contentId);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main_content, contentFragment)
                 /*.addToBackStack(null)*/
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
