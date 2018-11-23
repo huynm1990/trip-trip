@@ -18,6 +18,10 @@ import com.org.triptrip.R;
 import com.org.triptrip.fragment.ContentFragment;
 import com.org.triptrip.fragment.ServiceFilterFragment;
 
+/**
+ * Main activity
+ * @author Huy Nguyen
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -133,18 +137,13 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        /*int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }*/
-        switch (item.getItemId()) {
+        int id = item.getItemId();
+        switch (id) {
             case android.R.id.home:
                 drawer.openDrawer(GravityCompat.START);
                 return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -163,11 +162,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        }/* else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
