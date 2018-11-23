@@ -100,7 +100,8 @@ public class ContentFragment extends Fragment {
      */
     public void loadServices(View view) {
         final RecyclerView serviceRecycler = (RecyclerView) view.findViewById(R.id.recycler_services);
-        String url = "items?page=" + 0 + "&size=10&sort=updated,desc&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22}]";
+        //String url = "items?page=" + 0 + "&size=10&sort=updated,desc&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22}]";
+        String url = "items?page=" + 0 + "&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'SERVICE'}]";
         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
