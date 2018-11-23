@@ -7,25 +7,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.org.triptrip.R;
-import com.org.triptrip.adapter.OrderSpinnerAdapter;
-import com.org.triptrip.common.OrderItem;
-import com.org.triptrip.fragment.EventMaterialFragment;
-import com.org.triptrip.fragment.ExperienceMaterialFragment;
+import com.org.triptrip.fragment.ContentFragment;
 import com.org.triptrip.fragment.ServiceFilterFragment;
-import com.org.triptrip.fragment.ServiceMaterialFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,47 +30,53 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Load toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_24dp);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Load filter fragment
+        loadFilterFragment(navigationId);
+
+        // Load main content
+        loadContentFragment(navigationId);
+
+        // Load bottom navigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
-
-        /**
-         * Load filter fragment
-         */
-        switchFilterFragment(navigationId);
-
-        /**
-         * Load main content fragment
-         */
-        switchFragment(navigationId);
         bottomNavigationView.setSelectedItemId(navigationId);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem item) {
-                        return switchFragment(item.getItemId());
+                        return loadContentFragment(item.getItemId());
                     }
 
                 });
 
     }
 
-    private boolean switchFilterFragment(int pos) {
+    private boolean loadContentFragment(int contentId) {
+        ContentFragment contentFragment = new ContentFragment();
+        if (contentFragment == null) {
+            return false;
+        }
+        contentFragment.setContentId(contentId);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main_content, contentFragment)
+                /*.addToBackStack(null)*/
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+        return true;
+    }
+
+    private boolean loadFilterFragment(int pos) {
         android.support.v4.app.Fragment fragment = null;
-        /*if (pos == R.id.navigation_events) {
-            fragment = new EventMaterialFragment();
-        } else if (pos == R.id.navigation_services) {
-            fragment = new ServiceMaterialFragment();
-        } else if (pos == R.id.navigation_experiences) {
-            fragment = new ExperienceMaterialFragment();
-        }*/
         fragment = new ServiceFilterFragment();
         if (fragment == null) {
             return false;
@@ -87,28 +84,6 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_service_filter, fragment)
-                /*.addToBackStack(null)*/
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                .commit();
-        return true;
-    }
-
-    private boolean switchFragment(int pos) {
-        navigationId = pos;
-        android.support.v4.app.Fragment fragment = null;
-        if (pos == R.id.navigation_events) {
-            fragment = new EventMaterialFragment();
-        } else if (pos == R.id.navigation_services) {
-            fragment = new ServiceMaterialFragment();
-        } else if (pos == R.id.navigation_experiences) {
-            fragment = new ExperienceMaterialFragment();
-        }
-        if (fragment == null) {
-            return false;
-        }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frame_category_content, fragment)
                 /*.addToBackStack(null)*/
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();

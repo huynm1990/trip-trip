@@ -28,6 +28,8 @@ import java.util.List;
 public class ServiceFilterFragment extends Fragment {
 
 
+    private int filterId;
+
     public ServiceFilterFragment() {
         // Required empty public constructor
     }
@@ -43,6 +45,7 @@ public class ServiceFilterFragment extends Fragment {
     public void onStart() {
         super.onStart();
         View view = getView();
+        // Load filter content
         RecyclerView serviceFilterRecycler = (RecyclerView) view.findViewById(R.id.service_filter_recycler);
 
         List<ServiceFilterItem> items = new ArrayList<ServiceFilterItem>();
@@ -55,7 +58,6 @@ public class ServiceFilterFragment extends Fragment {
 
         }
 
-
         ServiceFilterAdapter adapter = new ServiceFilterAdapter(items, getActivity());
         serviceFilterRecycler.setAdapter(adapter);
 
@@ -63,6 +65,7 @@ public class ServiceFilterFragment extends Fragment {
         layoutManager.setOrientation(LinearLayout.HORIZONTAL);
         serviceFilterRecycler.setLayoutManager(layoutManager);
 
+        // Load spinner
         Spinner spin = (Spinner) view.findViewById(R.id.spinner_order);
         List<OrderItem> spinnerItems = new ArrayList<OrderItem>();
         for (int i = 0; i < OrderItem.items.length; i++) {
@@ -71,5 +74,9 @@ public class ServiceFilterFragment extends Fragment {
 
         OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getActivity().getApplicationContext(), spinnerItems);
         spin.setAdapter(orderSpinnerAdapter);
+    }
+
+    public void setFilterId(int filterId) {
+        this.filterId = filterId;
     }
 }
