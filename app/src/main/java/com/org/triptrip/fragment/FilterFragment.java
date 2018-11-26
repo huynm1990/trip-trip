@@ -16,8 +16,7 @@ import android.widget.Spinner;
 import com.org.triptrip.R;
 import com.org.triptrip.adapter.OrderSpinnerAdapter;
 import com.org.triptrip.adapter.ServiceFilterAdapter;
-import com.org.triptrip.common.OrderItem;
-import com.org.triptrip.common.ServiceFilterItem;
+import com.org.triptrip.enums.CategoryKeyword;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +27,12 @@ import java.util.List;
  */
 public class FilterFragment extends Fragment {
 
-    public static interface SpinnerItemListener {
+    public static interface OnFilterItemSelectedListener {
         void onSpinnerItemSelected(int id);
+        void onRecyclerViewItemSelected(int id);
     }
 
-    private SpinnerItemListener listener;
+    private OnFilterItemSelectedListener listener;
 
     private int filterId;
 
@@ -54,31 +54,29 @@ public class FilterFragment extends Fragment {
         // Load filter content
         RecyclerView serviceFilterRecycler = (RecyclerView) view.findViewById(R.id.service_filter_recycler);
 
-        List<ServiceFilterItem> items = new ArrayList<ServiceFilterItem>();
+        List<CategoryKeyword> items = new ArrayList<CategoryKeyword>();
 
-        for (int i = 0; i < ServiceFilterItem.items.length; i++) {
-            items.add(new ServiceFilterItem(
-                    ServiceFilterItem.items[i].getKeywork(),
-                    ServiceFilterItem.items[i].getImage()
+        for (CategoryKeyword item : CategoryKeyword.VALUES.values()) {
+            items.add(new CategoryKeyword(
+                    item.getId(),
+                    item.getKeyword(),
+                    item.getImage()
             ));
-
         }
 
-        ServiceFilterAdapter adapter = new ServiceFilterAdapter(items, getActivity());
+        ServiceFilterAdapter adapter = new ServiceFilterAdapter(getActivity(), listener);
         serviceFilterRecycler.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayout.HORIZONTAL);
         serviceFilterRecycler.setLayoutManager(layoutManager);
 
+
+
+
         // Load spinner
         Spinner spin = (Spinner) view.findViewById(R.id.spinner_order);
-        List<OrderItem> spinnerItems = new ArrayList<OrderItem>();
-        for (int i = 0; i < OrderItem.items.length; i++) {
-            spinnerItems.add(new OrderItem(OrderItem.items[i].getKeyword(), OrderItem.items[i].getImage(), OrderItem.items[i].getTitle()));
-        }
-
-        OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getActivity().getApplicationContext(), spinnerItems);
+        OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getActivity().getApplicationContext());
         spin.setAdapter(orderSpinnerAdapter);
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -96,7 +94,7 @@ public class FilterFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.listener = (SpinnerItemListener) getActivity();
+        this.listener = (OnFilterItemSelectedListener) getActivity();
     }
 
     public void setFilterId(int filterId) {

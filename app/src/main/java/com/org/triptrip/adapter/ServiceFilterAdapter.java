@@ -6,24 +6,29 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.org.triptrip.R;
-import com.org.triptrip.common.ServiceFilterItem;
+import com.org.triptrip.enums.CategoryKeyword;
+import com.org.triptrip.fragment.FilterFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceFilterAdapter extends RecyclerView.Adapter<ServiceFilterAdapter.ViewHolder> {
 
-    private List<ServiceFilterItem> items = new ArrayList<ServiceFilterItem>();
+    private List<CategoryKeyword> items = new ArrayList<CategoryKeyword>();
     private Activity activity;
+    private FilterFragment.OnFilterItemSelectedListener listener;
 
-    public ServiceFilterAdapter(List<ServiceFilterItem> items, Activity activity) {
-        this.items = items;
+    public ServiceFilterAdapter(Activity activity, FilterFragment.OnFilterItemSelectedListener listener) {
         this.activity = activity;
+        this.listener = listener;
+        for (CategoryKeyword categoryKeyword : CategoryKeyword.VALUES.values()) {
+            items.add(categoryKeyword);
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -45,12 +50,18 @@ public class ServiceFilterAdapter extends RecyclerView.Adapter<ServiceFilterAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         CardView cardView = viewHolder.cardView;
-
         ImageView imageView = (ImageView) cardView.findViewById(R.id.img_icon);
         Drawable drawable = cardView.getResources().getDrawable(this.items.get(position).getImage());
         imageView.setImageDrawable(drawable);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onRecyclerViewItemSelected(position);
+            }
+        });
 
     }
 

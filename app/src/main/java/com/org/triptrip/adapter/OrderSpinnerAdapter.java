@@ -9,20 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.org.triptrip.R;
-import com.org.triptrip.common.OrderItem;
+import com.org.triptrip.enums.Priority;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderSpinnerAdapter extends BaseAdapter {
 
     Context context;
     LayoutInflater inflter;
-    List<OrderItem> items;
+    List<Priority> items = new ArrayList<Priority>();
 
-    public OrderSpinnerAdapter(Context applicationContext, List<OrderItem> items) {
+    public OrderSpinnerAdapter(Context applicationContext) {
         this.context = applicationContext;
         inflter = (LayoutInflater.from(applicationContext));
-        this.items = items;
+        for (Priority orderItem: Priority.VALUES.values()) {
+            this.items.add(orderItem);
+        }
     }
 
     @Override

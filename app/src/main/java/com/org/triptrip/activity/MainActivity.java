@@ -23,11 +23,13 @@ import com.org.triptrip.fragment.FilterFragment;
  * @author Huy Nguyen
  */
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FilterFragment.SpinnerItemListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FilterFragment.OnFilterItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
     DrawerLayout drawer;
     private static int navigationId = R.id.navigation_events;
+    private static int categoryId = 0;
+    private static int sortId = 0;
 
 
     @Override
@@ -49,10 +51,10 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // Load filter fragment
-        loadFilterFragment(navigationId);
+        loadFilterFragment();
 
         // Load main content
-        loadContentFragment(navigationId, 0);
+        loadContentFragment();
 
         // Load bottom navigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public boolean onNavigationItemSelected(MenuItem item) {
                         navigationId = item.getItemId();
-                        return loadContentFragment(item.getItemId(), 0);
+                        return loadContentFragment();
                     }
 
                 });
@@ -72,10 +74,9 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * Load filter fragment
-     * @param pos
      * @return true/false
      */
-    private boolean loadFilterFragment(int pos) {
+    private boolean loadFilterFragment() {
         android.support.v4.app.Fragment fragment = null;
         fragment = new FilterFragment();
         if (fragment == null) {
@@ -92,15 +93,15 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * Load content fragment
-     * @param contentId
-     * @return true/false
+     * @return
      */
-    private boolean loadContentFragment(int contentId, int sortId) {
+    private boolean loadContentFragment() {
         ContentFragment contentFragment = new ContentFragment();
         if (contentFragment == null) {
             return false;
         }
-        contentFragment.setContentId(contentId);
+        contentFragment.setContentId(navigationId);
+        contentFragment.setCategoryId(categoryId);
         contentFragment.setSortId(sortId);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -190,6 +191,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onSpinnerItemSelected(int id) {
-        loadContentFragment(navigationId, id);
+        sortId = id;
+        loadContentFragment();
+    }
+
+    @Override
+    public void onRecyclerViewItemSelected(int id) {
+        categoryId = id;
+        loadContentFragment();
     }
 }

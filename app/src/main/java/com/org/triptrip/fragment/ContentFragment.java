@@ -17,9 +17,9 @@ import com.org.triptrip.adapter.ExperienceAdapter;
 import com.org.triptrip.adapter.ServicesAdapter;
 import com.org.triptrip.common.EventItem;
 import com.org.triptrip.common.ExperienceItem;
+import com.org.triptrip.enums.CategoryKeyword;
 import com.org.triptrip.common.ServiceItem;
 import com.org.triptrip.enums.ItemType;
-import com.org.triptrip.enums.Priority;
 import com.org.triptrip.listener.EndlessRecyclerViewScrollListener;
 import com.org.triptrip.webservice.BaseJSONRestClient;
 
@@ -40,6 +40,7 @@ public class ContentFragment extends Fragment {
 
     private int contentId;
     private int sortId;
+    private int categoryId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,12 +101,10 @@ public class ContentFragment extends Fragment {
     public void loadServices(View view) {
         final String itemType = ItemType.SERVICE.getName();
         final RecyclerView serviceRecycler = (RecyclerView) view.findViewById(R.id.recycler_services);
-        //String url = "items?page=" + 0 + "&size=10&sort=updated,desc&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22}]";
-        /*String url = "items?page=0&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}"
-        + ",{%22key%22:%22priority%22,%22operator%22:%22=%22,%22value%22:%" + Priority.valueOf(sortId).getName() + "%22}]";
-*/
-        String url = "items?page=0&size=10&sort=updated,desc&filterJson="
-                + "[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22},{%22key%22:%22priority%22,%22operator%22:%22=%22,%22value%22:%22" + Priority.valueOf(sortId).getName() + "%22}]";
+
+        String url = "items?page=0&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + itemType + "%22}"
+                + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
+        Log.e("Json URL", url);
         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -126,7 +125,8 @@ public class ContentFragment extends Fragment {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         final RecyclerView viewInner = view;
-                        String url = "items?page=" + page + "&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}]";
+                        String url = "items?page=" + page + "&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + itemType + "%22}"
+                                + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
                         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -163,7 +163,7 @@ public class ContentFragment extends Fragment {
         final String itemType = ItemType.EXPERIENCE.getName();
         final RecyclerView serviceRecycler = (RecyclerView) view.findViewById(R.id.recycler_experiences);
         //String url = "items?page=0&size=10&sort=updated,desc&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22}]";
-        String url = "items?page=0&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}]";
+        String url = "items?page=0&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}, {'key':'priority','operator':'=','value':'LATEST'}]";
         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -184,7 +184,7 @@ public class ContentFragment extends Fragment {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         final RecyclerView viewInner = view;
-                        String url = "items?page=" + page + "&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}]";
+                        String url = "items?page=" + page + "&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}, {'key':'priority','operator':'=','value':'LATEST'}]";
                         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -219,6 +219,10 @@ public class ContentFragment extends Fragment {
 
     public void setSortId(int sortId) {
         this.sortId = sortId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public List<ServiceItem> getServiceItems(JSONArray jsonItems) {
