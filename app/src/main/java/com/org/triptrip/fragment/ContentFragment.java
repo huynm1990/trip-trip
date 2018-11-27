@@ -12,21 +12,17 @@ import android.view.ViewGroup;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.org.triptrip.R;
-import com.org.triptrip.adapter.EventsAdapter;
-import com.org.triptrip.adapter.ExperienceAdapter;
-import com.org.triptrip.adapter.ServicesAdapter;
-import com.org.triptrip.common.EventItem;
-import com.org.triptrip.common.ExperienceItem;
+import com.org.triptrip.adapter.ItemViewAdapter;
+import com.org.triptrip.common.ItemViewDTO;
 import com.org.triptrip.enums.CategoryKeyword;
-import com.org.triptrip.common.ServiceItem;
 import com.org.triptrip.enums.ItemType;
 import com.org.triptrip.listener.EndlessRecyclerViewScrollListener;
+import com.org.triptrip.utils.JSONUtils;
 import com.org.triptrip.webservice.BaseJSONRestClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -41,6 +37,18 @@ public class ContentFragment extends Fragment {
     private int contentId;
     private int sortId;
     private int categoryId;
+
+    public void setContentId(int contentId) {
+        this.contentId = contentId;
+    }
+
+    public void setSortId(int sortId) {
+        this.sortId = sortId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,75 +65,50 @@ public class ContentFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        View view = getView();
+        loadNavigationContentItem(getView());
+
+    }
+
+    public void loadNavigationContentItem(View view) {
+        RecyclerView initRecyclerView = null;
+
         if (contentId == R.id.navigation_events) {
-            loadEvents(view);
+            initRecyclerView = view.findViewById(R.id.recycler_events);
         } else if (contentId == R.id.navigation_services) {
-            loadServices(view);
+            initRecyclerView = view.findViewById(R.id.recycler_services);
         } else if (contentId == R.id.navigation_experiences) {
-            loadExperiences(view);
+            initRecyclerView = view.findViewById(R.id.recycler_experiences);
         }
 
-    }
-
-    /**
-     * Load events
-     * @param view
-     */
-    public void loadEvents(View view) {
-        RecyclerView eventRecycler = view.findViewById(R.id.recycler_events);
-        List<EventItem> events = new ArrayList<EventItem>();
-
-        for (int i = 0; i < EventItem.events.length; i++) {
-            events.add(new EventItem(
-                    EventItem.events[i].getTitle(),
-                    EventItem.events[i].getEventType(),
-                    EventItem.events[i].getRegion(),
-                    EventItem.events[i].getFromDate(),
-                    EventItem.events[i].getToDate()
-            ));
-
-        }
-
-        EventsAdapter adapter = new EventsAdapter(events, getActivity());
-        eventRecycler.setAdapter(adapter);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        eventRecycler.setLayoutManager(layoutManager);
-    }
-
-    /**
-     * Load services
-     * @param view
-     */
-    public void loadServices(View view) {
-        final String itemType = ItemType.SERVICE.getName();
-        final RecyclerView serviceRecycler = (RecyclerView) view.findViewById(R.id.recycler_services);
-
-        String url = "items?page=0&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + itemType + "%22}"
+        final RecyclerView recyclerView = initRecyclerView;
+        String url = "items?page=0&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId).getName() + "%22}"
                 + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
-        Log.e("Json URL", url);
+        Log.e("JSON url", url);
         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // If the response is JSONObject instead of expected JSONArray
-            }
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                List<ItemViewDTO> items = JSONUtils.parseJSONToItemViewDTO(response);
+                final ItemViewAdapter adapter = new ItemViewAdapter(contentId, items, getActivity());
+                recyclerView.setAdapter(adapter);
+                Log.e("JSON items", items.toString());
+                RecyclerView.LayoutManager layoutManager = null;
+                if (contentId == R.id.navigation_events) {
+                    layoutManager = new LinearLayoutManager(getActivity());
+                    recyclerView.setLayoutManager(layoutManager);
+                } else if (contentId == R.id.navigation_services) {
+                    layoutManager = new GridLayoutManager(getActivity(), 2);
+                    recyclerView.setLayoutManager(layoutManager);
+                } else if (contentId == R.id.navigation_experiences) {
+                    layoutManager = new GridLayoutManager(getActivity(), 2);
+                    recyclerView.setLayoutManager(layoutManager);
+                }
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray jsonItems) {
-                List<ServiceItem> itemFirstTime = getServiceItems(jsonItems);
-                Log.e("onJSON size", Integer.toString(itemFirstTime.size()));
-                final ServicesAdapter adapter = new ServicesAdapter(itemFirstTime, getActivity());
-                serviceRecycler.setAdapter(adapter);
-
-                GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-                serviceRecycler.setLayoutManager(layoutManager);
-
-                EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
+                final RecyclerView.LayoutManager lManager = layoutManager;
+                EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(lManager) {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         final RecyclerView viewInner = view;
-                        String url = "items?page=" + page + "&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + itemType + "%22}"
+                        String url = "items?page=" + page + "&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId) + "%22}"
                                 + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
                         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
                             @Override
@@ -136,8 +119,8 @@ public class ContentFragment extends Fragment {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONArray jsonItems) {
                                 final int curSize = adapter.getItemCount();
-                                final List<ServiceItem> items = adapter.getServices();
-                                items.addAll(getServiceItems(jsonItems));
+                                final List<ItemViewDTO> items = adapter.getItems();
+                                items.addAll(JSONUtils.parseJSONToItemViewDTO(jsonItems));
                                 Log.e("onScroll size", Integer.toString(items.size()));
                                 viewInner.post(new Runnable() {
                                     @Override
@@ -147,119 +130,18 @@ public class ContentFragment extends Fragment {
                                 });
                             }
                         });
-
                     }
                 };
-                serviceRecycler.addOnScrollListener(scrollListener);
-            }
-        });
-    }
 
-    /**
-     * Load experiences
-     * @param view
-     */
-    public void loadExperiences(View view) {
-        final String itemType = ItemType.EXPERIENCE.getName();
-        final RecyclerView serviceRecycler = (RecyclerView) view.findViewById(R.id.recycler_experiences);
-        //String url = "items?page=0&size=10&sort=updated,desc&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22SERVICE%22}]";
-        String url = "items?page=0&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}]";
-        Log.e("Experience", url);
-        BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // If the response is JSONObject instead of expected JSONArray
+                recyclerView.addOnScrollListener(scrollListener);
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray jsonItems) {
-                List<ExperienceItem> itemFirstTime = getExperienceItems(jsonItems);
-                Log.e("onJSON size", Integer.toString(itemFirstTime.size()));
-                final ExperienceAdapter adapter = new ExperienceAdapter(itemFirstTime, getActivity());
-                serviceRecycler.setAdapter(adapter);
-
-                GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-                serviceRecycler.setLayoutManager(layoutManager);
-
-                EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {
-                    @Override
-                    public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                        final RecyclerView viewInner = view;
-                        String url = "items?page=" + page + "&size=10&sort=updated,desc&filterJson=[{'key':'itemType','operator':'=','value':'" + itemType + "'}, {'key':'priority','operator':'=','value':'LATEST'}]";
-                        BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                // If the response is JSONObject instead of expected JSONArray
-                            }
-
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONArray jsonItems) {
-                                final int curSize = adapter.getItemCount();
-                                final List<ExperienceItem> items = adapter.getExperiences();
-                                items.addAll(getExperienceItems(jsonItems));
-                                Log.e("onScroll size", Integer.toString(items.size()));
-                                viewInner.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        adapter.notifyItemRangeInserted(curSize, items.size() - 1);
-                                    }
-                                });
-                            }
-                        });
-
-                    }
-                };
-                serviceRecycler.addOnScrollListener(scrollListener);
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
             }
         });
+
     }
 
-    public void setContentId(int contentId) {
-        this.contentId = contentId;
-    }
-
-    public void setSortId(int sortId) {
-        this.sortId = sortId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public List<ServiceItem> getServiceItems(JSONArray jsonItems) {
-        List<ServiceItem> items = new ArrayList<ServiceItem>();
-        for (int i = 0; i < jsonItems.length(); i++) {
-            try {
-                JSONObject s = jsonItems.getJSONObject(i);
-                String title = s.getString("title");
-                items.add(new ServiceItem(
-                        title,
-                        ServiceItem.services[0].getImage(),
-                        ServiceItem.services[0].getDateCreated(),
-                        ServiceItem.services[0].getPhone(),
-                        ServiceItem.services[0].getLocation(),
-                        ServiceItem.services[0].getRating()));
-            } catch (Exception ex) {
-
-            }
-        }
-        return items;
-    }
-
-    public List<ExperienceItem> getExperienceItems(JSONArray jsonItems) {
-        List<ExperienceItem> items = new ArrayList<ExperienceItem>();
-        for (int i = 0; i < jsonItems.length(); i++) {
-            try {
-                JSONObject s = jsonItems.getJSONObject(i);
-                String title = s.getString("title");
-                items.add(new ExperienceItem(
-                        title,
-                        ExperienceItem.experiences[0].getImage(),
-                        ExperienceItem.experiences[0].getDateCreated()));
-            } catch (Exception ex) {
-
-            }
-        }
-        return items;
-    }
 }

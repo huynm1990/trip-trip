@@ -27,12 +27,6 @@ public class Priority extends Item {
         this.title = title;
     }
 
-    private static Priority create(int id, String keyword, int img, String title) {
-        Priority orderItem = new Priority(id, keyword, img, title);
-        VALUES.put(id, orderItem);
-        return orderItem;
-    }
-
     public int getId() {
         return id;
     }
@@ -46,6 +40,12 @@ public class Priority extends Item {
 
     public String getKeyword() {
         return keyword;
+    }
+
+    private static Priority create(int id, String keyword, int img, String title) {
+        Priority orderItem = new Priority(id, keyword, img, title);
+        VALUES.put(id, orderItem);
+        return orderItem;
     }
 
     public static Priority valueOf(Integer id) {

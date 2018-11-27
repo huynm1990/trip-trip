@@ -8,8 +8,10 @@ package com.org.triptrip.common;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,8 +22,6 @@ import lombok.ToString;
  */
 @SuppressWarnings("serial")
 @Getter
-@Setter
-@NoArgsConstructor
 @ToString
 public class ItemViewDTO extends BaseDTO implements Serializable {
 
@@ -58,5 +58,51 @@ public class ItemViewDTO extends BaseDTO implements Serializable {
     private Integer accounts;
     private Integer views;
     private ServiceDetailDTO serviceDetail;
+
+    @Builder
+    public ItemViewDTO(String uuid, Integer id, String captchaResponse, Date created, Date updated,
+                       String itemType, String itemKind, String level, String ownerId, String ownerName,
+                       String ownerImage, String title, String detail, String description, String destination,
+                       String status, BigDecimal newPrice, BigDecimal oldPrice, BigDecimal fromPrice,
+                       BigDecimal toPrice, String currency, String priceType, BigDecimal comparablePrice,
+                       String imageId, String originalImage, String largeImage, String mediumImage,
+                       String smallImage, String imageDescription, String imageDimension, List<String> categoryList,
+                       List<String> keywordList, List<InteractionDTO> interactionList, Integer followers,
+                       Long comments, Integer accounts, Integer views, ServiceDetailDTO serviceDetail) {
+        super(uuid, id, captchaResponse, created, updated);
+        this.itemType = itemType;
+        this.itemKind = itemKind;
+        this.level = level;
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
+        this.ownerImage = ownerImage;
+        this.title = title;
+        this.detail = detail;
+        this.description = description;
+        this.destination = destination;
+        this.status = status;
+        this.newPrice = newPrice;
+        this.oldPrice = oldPrice;
+        this.fromPrice = fromPrice;
+        this.toPrice = toPrice;
+        this.currency = currency;
+        this.priceType = priceType;
+        this.comparablePrice = comparablePrice;
+        this.imageId = imageId;
+        this.originalImage = originalImage;
+        this.largeImage = largeImage;
+        this.mediumImage = mediumImage;
+        this.smallImage = smallImage;
+        this.imageDescription = imageDescription;
+        this.imageDimension = imageDimension;
+        this.categoryList = categoryList;
+        this.keywordList = keywordList;
+        this.interactionList = interactionList;
+        this.followers = followers;
+        this.comments = comments;
+        this.accounts = accounts;
+        this.views = views;
+        this.serviceDetail = serviceDetail;
+    }
 
 }

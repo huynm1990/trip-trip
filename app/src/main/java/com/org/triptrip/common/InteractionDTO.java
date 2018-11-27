@@ -7,7 +7,9 @@
 package com.org.triptrip.common;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,8 +21,6 @@ import lombok.Setter;
  */
 @SuppressWarnings("serial")
 @Getter
-@Setter
-@NoArgsConstructor // <--- THIS is it
 public class InteractionDTO extends BaseDTO implements Serializable {
 
     private String type;
@@ -28,6 +28,17 @@ public class InteractionDTO extends BaseDTO implements Serializable {
     private String key;
     private String name;
     private Integer count;
+
+    @Builder
+    public InteractionDTO(String uuid, Integer id, String captchaResponse, Date created, Date updated,
+                          String type, Integer order, String key, String name, Integer count) {
+        super(uuid, id, captchaResponse, created, updated);
+        this.type = type;
+        this.order = order;
+        this.key = key;
+        this.name = name;
+        this.count = count;
+    }
 
     /**
      * @return the count

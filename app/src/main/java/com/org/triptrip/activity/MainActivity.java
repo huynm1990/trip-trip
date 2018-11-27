@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import com.org.triptrip.R;
+import com.org.triptrip.common.ItemViewDTO;
 import com.org.triptrip.fragment.ContentFragment;
 import com.org.triptrip.fragment.FilterFragment;
 

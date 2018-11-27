@@ -9,10 +9,14 @@ package com.org.triptrip.common;
 import java.io.Serializable;
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * @author HoanTran
  */
-@SuppressWarnings("serial")
+@Getter
+@AllArgsConstructor
 public class BaseDTO implements Serializable {
 
     private String uuid;
