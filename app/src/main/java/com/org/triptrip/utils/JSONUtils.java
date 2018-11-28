@@ -165,7 +165,7 @@ public class JSONUtils {
                 itemViewDTOBuilder.views(Integer.valueOf(jsonObject.getString("views")));
 
                 // serviceDetail
-                itemViewDTOBuilder.serviceDetail(parseJSONToServiceDetailDTO(jsonObject));
+                //itemViewDTOBuilder.serviceDetail(parseJSONToServiceDetailDTO(jsonObject));
                 // itemViewDTOList
                 ItemViewDTO itemViewDTO = itemViewDTOBuilder.build();
                 itemViewDTOList.add(itemViewDTO);

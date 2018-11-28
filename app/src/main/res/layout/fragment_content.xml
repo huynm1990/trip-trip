@@ -3,8 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/recycler_content"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fragment id is not valid"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        tools:context=".fragment.ContentFragment">
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

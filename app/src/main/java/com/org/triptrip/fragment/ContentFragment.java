@@ -52,13 +52,6 @@ public class ContentFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (contentId == R.id.navigation_events) {
-            return inflater.inflate(R.layout.fragment_event_material, container, false);
-        } else if (contentId == R.id.navigation_services) {
-            return inflater.inflate(R.layout.fragment_service_material, container, false);
-        } else if (contentId == R.id.navigation_experiences) {
-            return inflater.inflate(R.layout.fragment_experience_material, container, false);
-        }
         return inflater.inflate(R.layout.fragment_content, container, false);
     }
 
@@ -70,17 +63,7 @@ public class ContentFragment extends Fragment {
     }
 
     public void loadNavigationContentItem(View view) {
-        RecyclerView initRecyclerView = null;
-
-        if (contentId == R.id.navigation_events) {
-            initRecyclerView = view.findViewById(R.id.recycler_events);
-        } else if (contentId == R.id.navigation_services) {
-            initRecyclerView = view.findViewById(R.id.recycler_services);
-        } else if (contentId == R.id.navigation_experiences) {
-            initRecyclerView = view.findViewById(R.id.recycler_experiences);
-        }
-
-        final RecyclerView recyclerView = initRecyclerView;
+        final RecyclerView recyclerView = view.findViewById(R.id.recycler_content);
         String url = "items?page=0&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId).getName() + "%22}"
                 + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
         Log.e("JSON url", url);
@@ -108,7 +91,7 @@ public class ContentFragment extends Fragment {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         final RecyclerView viewInner = view;
-                        String url = "items?page=" + page + "&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId) + "%22}"
+                        String url = "items?page=" + page + "&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId).getName() + "%22}"
                                 + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
                         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
                             @Override
@@ -121,6 +104,7 @@ public class ContentFragment extends Fragment {
                                 final int curSize = adapter.getItemCount();
                                 final List<ItemViewDTO> items = adapter.getItems();
                                 items.addAll(JSONUtils.parseJSONToItemViewDTO(jsonItems));
+                                //items.addAll(JSONUtils.parseJSONToItemViewDTO(jsonItems));
                                 Log.e("onScroll size", Integer.toString(items.size()));
                                 viewInner.post(new Runnable() {
                                     @Override
