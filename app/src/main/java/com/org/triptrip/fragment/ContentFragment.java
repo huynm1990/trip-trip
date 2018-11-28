@@ -14,6 +14,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.org.triptrip.R;
 import com.org.triptrip.adapter.ItemViewAdapter;
 import com.org.triptrip.common.ItemViewDTO;
+import com.org.triptrip.common.JSONFilter;
+import com.org.triptrip.common.JSONUrl;
 import com.org.triptrip.enums.CategoryKeyword;
 import com.org.triptrip.enums.ItemType;
 import com.org.triptrip.listener.EndlessRecyclerViewScrollListener;
@@ -23,6 +25,7 @@ import com.org.triptrip.webservice.BaseJSONRestClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -64,9 +67,11 @@ public class ContentFragment extends Fragment {
 
     public void loadNavigationContentItem(View view) {
         final RecyclerView recyclerView = view.findViewById(R.id.recycler_content);
-        String url = "items?page=0&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId).getName() + "%22}"
-                + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
-        Log.e("JSON url", url);
+        List<JSONFilter> filters = new ArrayList<JSONFilter>();
+        filters.add(new JSONFilter("itemType", "=", ItemType.valueOf(contentId).getName()));
+        JSONUrl jsonURL = new JSONUrl(0, 10, filters, "updated");
+        String url = jsonURL.toString();
+        Log.i("JSON URL: ", url);
         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -91,8 +96,11 @@ public class ContentFragment extends Fragment {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         final RecyclerView viewInner = view;
-                        String url = "items?page=" + page + "&size=10&filterJson=[{%22key%22:%22itemType%22,%22operator%22:%22=%22,%22value%22:%22" + ItemType.valueOf(contentId).getName() + "%22}"
-                                + ",{%22key%22:%22categoryKeyword%22,%22operator%22:%22like%22,%22value%22:%22" + CategoryKeyword.valueOf(categoryId).getKeyword() + "%22}]&sort=updated";
+                        List<JSONFilter> filters = new ArrayList<JSONFilter>();
+                        filters.add(new JSONFilter("itemType", "=", ItemType.valueOf(contentId).getName()));
+                        JSONUrl jsonURL = new JSONUrl(page, 10, filters, "updated");
+                        String url = jsonURL.toString();
+                        Log.i("JSON URL: ", url);
                         BaseJSONRestClient.get(url, null, new JsonHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
