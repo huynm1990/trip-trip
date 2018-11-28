@@ -112,7 +112,6 @@ public class ContentFragment extends Fragment {
                                 final int curSize = adapter.getItemCount();
                                 final List<ItemViewDTO> items = adapter.getItems();
                                 items.addAll(JSONUtils.parseJSONToItemViewDTO(jsonItems));
-                                //items.addAll(JSONUtils.parseJSONToItemViewDTO(jsonItems));
                                 Log.e("onScroll size", Integer.toString(items.size()));
                                 viewInner.post(new Runnable() {
                                     @Override
