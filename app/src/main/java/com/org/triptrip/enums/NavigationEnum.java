@@ -14,6 +14,14 @@ public class NavigationEnum {
     private int id;
     private NavigationType navigationType;
 
+    public int getId() {
+        return id;
+    }
+
+    public NavigationType getNavigationType() {
+        return navigationType;
+    }
+
     public static final Map<Integer, NavigationEnum> VALUES = new HashMap<Integer, NavigationEnum>();
 
     public static NavigationEnum EVENTS = create(R.id.navigation_events , new EventsNavigationType(R.id.navigation_events, "EVENTS", R.layout.card_events));
@@ -26,14 +34,6 @@ public class NavigationEnum {
     private NavigationEnum(int id, NavigationType navigationType) {
         this.id = id;
         this.navigationType = navigationType;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public NavigationType getNavigationType() {
-        return navigationType;
     }
 
     private static NavigationEnum create(int id, NavigationType navigationType) {

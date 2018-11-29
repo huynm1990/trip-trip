@@ -15,6 +15,18 @@ public class CategoryKeywordEnum {
     String keyword;
     int image;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
     public static final Map<Integer, CategoryKeywordEnum> VALUES = new HashMap<Integer, CategoryKeywordEnum>();
 
     private static CategoryKeywordEnum DISCUSSION = create(0, "HOTEL", R.drawable.ic_hotel_36dp);
@@ -40,18 +52,6 @@ public class CategoryKeywordEnum {
         CategoryKeywordEnum catKeyword = new CategoryKeywordEnum(id, name, img);
         VALUES.put(id, catKeyword);
         return catKeyword;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getKeyword() {
-        return keyword;
-    }
-
-    public int getImage() {
-        return image;
     }
 
     public static CategoryKeywordEnum valueOf(int id) {

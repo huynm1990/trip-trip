@@ -12,20 +12,6 @@ public class PriorityEnum {
     private int img;
     private String title;
 
-    public static final Map<Integer, PriorityEnum> VALUES = new HashMap<Integer, PriorityEnum>();
-
-    public static PriorityEnum LATEST = create(0, "LATEST", R.drawable.ic_schedule_15dp, "Latest");
-    public static PriorityEnum FAVOURITE = create(1, "FAVOURITE", R.drawable.ic_favorite_black_15dp, "Favorite");
-    public static PriorityEnum LOWEST_FIRST = create(2, "LOWEST_FIRST",R.drawable.ic_arrow_downward_15dp, "Price down");
-    public static PriorityEnum HIGHEST_FIRST = create(3, "HIGHEST_FIRST",R.drawable.ic_arrow_upward_15dp, "Price up");
-    public static PriorityEnum RELEVANT = create(4, "RELEVANT",R.drawable.triptrip_logo, "Relevant");
-
-    public PriorityEnum(int id, String keyword, int img, String title) {
-        this.keyword = keyword;
-        this.img = img;
-        this.title = title;
-    }
-
     public int getId() {
         return id;
     }
@@ -39,6 +25,20 @@ public class PriorityEnum {
 
     public String getKeyword() {
         return keyword;
+    }
+
+    public static final Map<Integer, PriorityEnum> VALUES = new HashMap<Integer, PriorityEnum>();
+
+    public static PriorityEnum LATEST = create(0, "LATEST", R.drawable.ic_schedule_15dp, "Latest");
+    public static PriorityEnum FAVOURITE = create(1, "FAVOURITE", R.drawable.ic_favorite_black_15dp, "Favorite");
+    public static PriorityEnum LOWEST_FIRST = create(2, "LOWEST_FIRST",R.drawable.ic_arrow_downward_15dp, "Price down");
+    public static PriorityEnum HIGHEST_FIRST = create(3, "HIGHEST_FIRST",R.drawable.ic_arrow_upward_15dp, "Price up");
+    public static PriorityEnum RELEVANT = create(4, "RELEVANT",R.drawable.triptrip_logo, "Relevant");
+
+    public PriorityEnum(int id, String keyword, int img, String title) {
+        this.keyword = keyword;
+        this.img = img;
+        this.title = title;
     }
 
     private static PriorityEnum create(int id, String keyword, int img, String title) {
