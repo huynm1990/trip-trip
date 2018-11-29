@@ -12,8 +12,8 @@ import java.util.Map;
 public class CategoryKeywordEnum {
 
     private int id;
-    String keyword;
-    int image;
+    private String keyword;
+    private int image;
 
     public int getId() {
         return id;
