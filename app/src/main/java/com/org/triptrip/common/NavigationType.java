@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 
-import com.org.triptrip.common.ItemViewDTO;
-
 import java.util.List;
 
 /**

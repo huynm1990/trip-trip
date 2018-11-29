@@ -1,19 +1,19 @@
 package com.org.triptrip.fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.org.triptrip.adapter.CategoriesAdapter;
+import com.org.triptrip.R;
 import com.org.triptrip.activity.EventDetailActivity;
 import com.org.triptrip.activity.ExperienceDetailActivity;
-import com.org.triptrip.R;
 import com.org.triptrip.activity.ServiceDetailActivity;
+import com.org.triptrip.adapter.CategoriesAdapter;
 import com.org.triptrip.common.Category;
 
 
