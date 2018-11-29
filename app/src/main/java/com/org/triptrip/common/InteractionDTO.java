@@ -11,8 +11,6 @@ import java.util.Date;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  * User DTO

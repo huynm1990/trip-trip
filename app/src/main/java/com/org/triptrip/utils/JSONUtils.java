@@ -2,7 +2,6 @@ package com.org.triptrip.utils;
 
 import android.util.Log;
 
-import com.google.android.gms.common.util.Strings;
 import com.org.triptrip.common.AddressDTO;
 import com.org.triptrip.common.InteractionDTO;
 import com.org.triptrip.common.ItemViewDTO;

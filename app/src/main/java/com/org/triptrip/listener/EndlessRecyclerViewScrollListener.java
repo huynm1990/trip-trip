@@ -4,7 +4,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.widget.AbsListView;
 
 public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnScrollListener
 {
