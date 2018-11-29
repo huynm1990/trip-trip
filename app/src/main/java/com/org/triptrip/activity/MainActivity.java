@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import com.org.triptrip.R;
-import com.org.triptrip.common.ItemViewDTO;
 import com.org.triptrip.fragment.ContentFragment;
 import com.org.triptrip.fragment.FilterFragment;
 
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity
         if (contentFragment == null) {
             return false;
         }
-        contentFragment.setContentId(navigationId);
+        contentFragment.setNavigationId(navigationId);
         contentFragment.setCategoryId(categoryId);
         contentFragment.setSortId(sortId);
         getSupportFragmentManager()

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.org.triptrip.R;
-import com.org.triptrip.enums.CategoryKeyword;
+import com.org.triptrip.enums.CategoryKeywordEnum;
 import com.org.triptrip.fragment.FilterFragment;
 
 import java.util.ArrayList;
@@ -19,14 +19,14 @@ import java.util.List;
 
 public class ServiceFilterAdapter extends RecyclerView.Adapter<ServiceFilterAdapter.ViewHolder> {
 
-    private List<CategoryKeyword> items = new ArrayList<CategoryKeyword>();
+    private List<CategoryKeywordEnum> items = new ArrayList<CategoryKeywordEnum>();
     private Activity activity;
     private FilterFragment.OnFilterItemSelectedListener listener;
 
     public ServiceFilterAdapter(Activity activity, FilterFragment.OnFilterItemSelectedListener listener) {
         this.activity = activity;
         this.listener = listener;
-        for (CategoryKeyword categoryKeyword : CategoryKeyword.VALUES.values()) {
+        for (CategoryKeywordEnum categoryKeyword : CategoryKeywordEnum.VALUES.values()) {
             items.add(categoryKeyword);
         }
     }

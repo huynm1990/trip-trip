@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import com.org.triptrip.R;
 import com.org.triptrip.adapter.OrderSpinnerAdapter;
 import com.org.triptrip.adapter.ServiceFilterAdapter;
-import com.org.triptrip.enums.CategoryKeyword;
+import com.org.triptrip.enums.CategoryKeywordEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +54,10 @@ public class FilterFragment extends Fragment {
         // Load filter content
         RecyclerView serviceFilterRecycler = (RecyclerView) view.findViewById(R.id.service_filter_recycler);
 
-        List<CategoryKeyword> items = new ArrayList<CategoryKeyword>();
+        List<CategoryKeywordEnum> items = new ArrayList<CategoryKeywordEnum>();
 
-        for (CategoryKeyword item : CategoryKeyword.VALUES.values()) {
-            items.add(new CategoryKeyword(
+        for (CategoryKeywordEnum item : CategoryKeywordEnum.VALUES.values()) {
+            items.add(new CategoryKeywordEnum(
                     item.getId(),
                     item.getKeyword(),
                     item.getImage()
