@@ -5,6 +5,10 @@ import com.org.triptrip.R;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Priority Enum
+ * @author Huy Nguyen
+ */
 public class PriorityEnum {
 
     private int id;
@@ -15,16 +19,17 @@ public class PriorityEnum {
     public int getId() {
         return id;
     }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
     public int getImage() {
         return img;
     }
 
     public String getTitle() {
         return title;
-    }
-
-    public String getKeyword() {
-        return keyword;
     }
 
     public static final Map<Integer, PriorityEnum> VALUES = new HashMap<Integer, PriorityEnum>();
@@ -36,6 +41,7 @@ public class PriorityEnum {
     public static PriorityEnum RELEVANT = create(4, "RELEVANT",R.drawable.triptrip_logo, "Relevant");
 
     public PriorityEnum(int id, String keyword, int img, String title) {
+        this.id = id;
         this.keyword = keyword;
         this.img = img;
         this.title = title;

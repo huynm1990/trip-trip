@@ -71,9 +71,6 @@ public class FilterFragment extends Fragment {
         layoutManager.setOrientation(LinearLayout.HORIZONTAL);
         serviceFilterRecycler.setLayoutManager(layoutManager);
 
-
-
-
         // Load spinner
         Spinner spin = (Spinner) view.findViewById(R.id.spinner_order);
         OrderSpinnerAdapter orderSpinnerAdapter = new OrderSpinnerAdapter(getActivity().getApplicationContext());
