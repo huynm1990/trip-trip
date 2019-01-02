@@ -16,18 +16,30 @@ public class PriorityEnum {
     private int img;
     private String title;
 
+    /**
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @return keyword
+     */
     public String getKeyword() {
         return keyword;
     }
 
+    /**
+     * @return image
+     */
     public int getImage() {
         return img;
     }
 
+    /**
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
@@ -40,6 +52,13 @@ public class PriorityEnum {
     public static PriorityEnum HIGHEST_FIRST = create(3, "HIGHEST_FIRST",R.drawable.ic_arrow_upward_15dp, "Price up");
     public static PriorityEnum RELEVANT = create(4, "RELEVANT",R.drawable.triptrip_logo, "Relevant");
 
+    /**
+     * PriorityEnum constructor
+     * @param id
+     * @param keyword
+     * @param img
+     * @param title
+     */
     public PriorityEnum(int id, String keyword, int img, String title) {
         this.id = id;
         this.keyword = keyword;
@@ -47,12 +66,25 @@ public class PriorityEnum {
         this.title = title;
     }
 
+    /**
+     * Create new PriorityEnum
+     * @param id
+     * @param keyword
+     * @param img
+     * @param title
+     * @return PriorityEnum object
+     */
     private static PriorityEnum create(int id, String keyword, int img, String title) {
         PriorityEnum orderItem = new PriorityEnum(id, keyword, img, title);
         VALUES.put(id, orderItem);
         return orderItem;
     }
 
+    /**
+     * Return PriorityEnum  at position (id)
+     * @param id
+     * @return PriorityEnum object
+     */
     public static PriorityEnum valueOf(Integer id) {
         return VALUES.get(id);
     }

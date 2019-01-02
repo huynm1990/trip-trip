@@ -15,14 +15,23 @@ public class CategoryKeywordEnum {
     private String keyword;
     private int image;
 
+    /**
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @return keyword
+     */
     public String getKeyword() {
         return keyword;
     }
 
+    /**
+     * @return image
+     */
     public int getImage() {
         return image;
     }
@@ -40,20 +49,36 @@ public class CategoryKeywordEnum {
     private static CategoryKeywordEnum HOTEL = create(8, "DISCUSSION", R.drawable.triptrip_logo);
     private static CategoryKeywordEnum VISA = create(9, "VISA", R.drawable.triptrip_logo);
 
-
-
+    /**
+     * CategoryKeywordEnum constructor
+     * @param id
+     * @param keyword
+     * @param image
+     */
     public CategoryKeywordEnum(int id, String keyword, int image) {
         this.id = id;
         this.keyword = keyword;
         this.image = image;
     }
 
+    /**
+     * Create new CategoryKeywordEnum
+     * @param id
+     * @param name
+     * @param img
+     * @return CategoryKeywordEnum object
+     */
     private static CategoryKeywordEnum create(int id, String name, int img) {
         CategoryKeywordEnum catKeyword = new CategoryKeywordEnum(id, name, img);
         VALUES.put(id, catKeyword);
         return catKeyword;
     }
 
+    /**
+     * Return CategoryKeywordEnum at position (id)
+     * @param id
+     * @return CategoryKeywordEnum object
+     */
     public static CategoryKeywordEnum valueOf(int id) {
         return VALUES.get(id);
     }
