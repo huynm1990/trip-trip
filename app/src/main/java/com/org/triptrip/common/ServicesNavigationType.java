@@ -13,8 +13,18 @@ import com.org.triptrip.R;
 
 import java.util.List;
 
+/**
+ * Services Navigation Type
+ * @author Huy Nguyen
+ */
 public class ServicesNavigationType extends NavigationType {
 
+    /**
+     * Services Navigation Type constructor
+     * @param id
+     * @param name
+     * @param layoutId
+     */
     public ServicesNavigationType(int id, String name, int layoutId) {
         super(id, name, layoutId);
     }

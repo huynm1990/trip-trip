@@ -13,8 +13,18 @@ import com.org.triptrip.R;
 
 import java.util.List;
 
+/**
+ * Experiences Navigation Type
+ * @author Huy Nguyen
+ */
 public class ExperiencesNavigationType extends NavigationType {
 
+    /**
+     * Experiences Navigation Type
+     * @param id
+     * @param name
+     * @param layoutId
+     */
     public ExperiencesNavigationType(int id, String name, int layoutId) {
         super(id, name, layoutId);
     }

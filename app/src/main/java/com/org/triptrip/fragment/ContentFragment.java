@@ -29,7 +29,6 @@ import cz.msebera.android.httpclient.Header;
 
 /**
  * This fragment contains the main content
- *
  * @author Huy Nguyen
  */
 public class ContentFragment extends Fragment {

@@ -11,8 +11,18 @@ import com.org.triptrip.R;
 
 import java.util.List;
 
+/**
+ * Events Navigation Type
+ * @author Huy Nguyen
+ */
 public class EventsNavigationType extends NavigationType {
 
+    /**
+     * EventsNavigationType constructor
+     * @param id
+     * @param name
+     * @param layoutId
+     */
     public EventsNavigationType(int id, String name, int layoutId) {
         super(id, name, layoutId);
     }

@@ -21,19 +21,39 @@ public abstract class NavigationType {
         this.name = name;
     }
 
+    /**
+     * @return id
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * @return layoutId
+     */
     public int getLayoutId() {
         return this.layoutId;
     }
 
+    /**
+     * @return name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Load content
+     * @param cardView
+     * @param items
+     * @param position
+     */
     public abstract void loadContent(CardView cardView, List<ItemViewDTO> items, int position);
 
+    /**
+     * Get layout manager
+     * @param activity
+     * @return layout manager
+     */
     public abstract RecyclerView.LayoutManager getLayoutManager(Activity activity);
 }
