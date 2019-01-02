@@ -14,6 +14,10 @@ import com.org.triptrip.enums.PriorityEnum;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Order Spinner Adapter
+ * @author Huy Nguyen
+ */
 public class OrderSpinnerAdapter extends BaseAdapter {
 
     Context context;

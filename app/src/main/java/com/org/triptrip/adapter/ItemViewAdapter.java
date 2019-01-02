@@ -11,6 +11,10 @@ import com.org.triptrip.enums.NavigationEnum;
 
 import java.util.List;
 
+/**
+ * Item View Adapter
+ * @author Huy Nguyen
+ */
 public class ItemViewAdapter extends RecyclerView.Adapter<ItemViewAdapter.ViewHolder>  {
 
     private int navigationId;

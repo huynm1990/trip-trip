@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import com.org.triptrip.R;
 
+/**
+ * Categories Adapter
+ * @author Huy Nguyen
+ */
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder> {
 
     private String[] captions;

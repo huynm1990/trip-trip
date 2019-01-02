@@ -16,6 +16,10 @@ import com.org.triptrip.fragment.FilterFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service Filter Adapter
+ * @author Huy Nguyen
+ */
 public class ServiceFilterAdapter extends RecyclerView.Adapter<ServiceFilterAdapter.ViewHolder> {
 
     private List<CategoryKeywordEnum> items = new ArrayList<CategoryKeywordEnum>();
