@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.org.triptrip.R;
-import com.org.triptrip.enums.PriorityEnum;
+import com.org.triptrip.enums.OrderEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +22,12 @@ public class OrderSpinnerAdapter extends BaseAdapter {
 
     Context context;
     LayoutInflater inflter;
-    List<PriorityEnum> items = new ArrayList<PriorityEnum>();
+    List<OrderEnum> items = new ArrayList<OrderEnum>();
 
     public OrderSpinnerAdapter(Context applicationContext) {
         this.context = applicationContext;
         inflter = (LayoutInflater.from(applicationContext));
-        for (PriorityEnum orderItem: PriorityEnum.VALUES.values()) {
+        for (OrderEnum orderItem: OrderEnum.VALUES.values()) {
             this.items.add(orderItem);
         }
     }

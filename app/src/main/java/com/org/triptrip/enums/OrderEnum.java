@@ -9,7 +9,7 @@ import java.util.Map;
  * Priority Enum
  * @author Huy Nguyen
  */
-public class PriorityEnum {
+public class OrderEnum {
 
     private int id;
     private String keyword;
@@ -44,13 +44,13 @@ public class PriorityEnum {
         return title;
     }
 
-    public static final Map<Integer, PriorityEnum> VALUES = new HashMap<Integer, PriorityEnum>();
+    public static final Map<Integer, OrderEnum> VALUES = new HashMap<Integer, OrderEnum>();
 
-    public static PriorityEnum LATEST = create(0, "LATEST", R.drawable.ic_schedule_15dp, "Latest");
-    public static PriorityEnum FAVOURITE = create(1, "FAVOURITE", R.drawable.ic_favorite_black_15dp, "Favorite");
-    public static PriorityEnum LOWEST_FIRST = create(2, "LOWEST_FIRST",R.drawable.ic_arrow_downward_15dp, "Price down");
-    public static PriorityEnum HIGHEST_FIRST = create(3, "HIGHEST_FIRST",R.drawable.ic_arrow_upward_15dp, "Price up");
-    public static PriorityEnum RELEVANT = create(4, "RELEVANT",R.drawable.triptrip_logo, "Relevant");
+    public static OrderEnum LATEST = create(0, "LATEST", R.drawable.ic_schedule_15dp, "Latest");
+    public static OrderEnum FAVOURITE = create(1, "FAVOURITE", R.drawable.ic_favorite_black_15dp, "Favorite");
+    public static OrderEnum LOWEST_FIRST = create(2, "LOWEST_FIRST",R.drawable.ic_arrow_downward_15dp, "Price down");
+    public static OrderEnum HIGHEST_FIRST = create(3, "HIGHEST_FIRST",R.drawable.ic_arrow_upward_15dp, "Price up");
+    public static OrderEnum RELEVANT = create(4, "RELEVANT",R.drawable.triptrip_logo, "Relevant");
 
     /**
      * PriorityEnum constructor
@@ -59,7 +59,7 @@ public class PriorityEnum {
      * @param img
      * @param title
      */
-    public PriorityEnum(int id, String keyword, int img, String title) {
+    public OrderEnum(int id, String keyword, int img, String title) {
         this.id = id;
         this.keyword = keyword;
         this.img = img;
@@ -74,8 +74,8 @@ public class PriorityEnum {
      * @param title
      * @return PriorityEnum object
      */
-    private static PriorityEnum create(int id, String keyword, int img, String title) {
-        PriorityEnum orderItem = new PriorityEnum(id, keyword, img, title);
+    private static OrderEnum create(int id, String keyword, int img, String title) {
+        OrderEnum orderItem = new OrderEnum(id, keyword, img, title);
         VALUES.put(id, orderItem);
         return orderItem;
     }
@@ -85,7 +85,7 @@ public class PriorityEnum {
      * @param id
      * @return PriorityEnum object
      */
-    public static PriorityEnum valueOf(Integer id) {
+    public static OrderEnum valueOf(Integer id) {
         return VALUES.get(id);
     }
 }

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawer;
     private static int navigationId = R.id.navigation_events;
     private static int categoryId = 0;
-    private static int sortId = 0;
+    private static int orderId = 0;
 
 
     @Override
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity
         }
         contentFragment.setNavigationId(navigationId);
         contentFragment.setCategoryId(categoryId);
-        contentFragment.setSortId(sortId);
+        contentFragment.setOrderId(orderId);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_main_content, contentFragment)
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onSpinnerItemSelected(int id) {
-        sortId = id;
+        orderId = id;
         loadContentFragment();
     }
 

@@ -35,7 +35,7 @@ public class ContentFragment extends Fragment {
 
     private int navigationId;
     private int categoryId;
-    private int sortId;
+    private int orderId;
 
     public void setNavigationId(int navigationId) {
         this.navigationId = navigationId;
@@ -45,8 +45,8 @@ public class ContentFragment extends Fragment {
         this.categoryId = categoryId;
     }
 
-    public void setSortId(int sortId) {
-        this.sortId = sortId;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     @Override
